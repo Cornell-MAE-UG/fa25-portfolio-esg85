@@ -11,196 +11,107 @@ permalink: /projects/2025-thermo/
   Elegant self-contained styling (safe for GitHub Pages)
 ========================================================== -->
 <style>
-  :root{
-    --bg: #0b1220;
-    --card: rgba(255,255,255,0.06);
-    --card2: rgba(255,255,255,0.08);
-    --stroke: rgba(255,255,255,0.12);
-    --text: rgba(255,255,255,0.92);
-    --muted: rgba(255,255,255,0.72);
-    --muted2: rgba(255,255,255,0.58);
-    --accent: rgba(120, 205, 255, 0.95);
-    --accent2: rgba(163, 255, 207, 0.95);
-    --warn: rgba(255, 212, 121, 0.95);
-    --danger: rgba(255, 130, 130, 0.95);
-    --shadow: 0 18px 55px rgba(0,0,0,0.45);
-    --radius: 18px;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  }
+/* ... keep your existing :root and other styles ... */
 
-  /* page container */
-  .thermo-wrap{
-    font-family: var(--sans);
-    color: var(--text);
-    line-height: 1.6;
-  }
+/* ---------- Elegant equation formatting (NOT code-looking) ---------- */
+.eq{
+  font-family: var(--sans);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  padding: 14px 14px;
+  margin: 12px 0;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+}
 
-  .hero{
-    border: 1px solid var(--stroke);
-    border-radius: calc(var(--radius) + 6px);
-    background: radial-gradient(1200px 600px at 12% 10%, rgba(120,205,255,0.18), transparent 55%),
-                radial-gradient(900px 600px at 85% 20%, rgba(163,255,207,0.12), transparent 55%),
-                rgba(255,255,255,0.03);
-    box-shadow: var(--shadow);
-    padding: 28px 26px;
-    margin: 18px 0 22px 0;
-  }
+.eq .eq-title{
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted2);
+  margin-bottom: 10px;
+}
 
-  .hero h1{
-    font-size: clamp(1.65rem, 2.2vw, 2.25rem);
-    line-height: 1.2;
-    margin: 0 0 10px 0;
-    letter-spacing: -0.02em;
-  }
+.eq .line{
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  padding: 6px 0;
+  border-top: 1px dashed rgba(255,255,255,0.10);
+}
+.eq .line:first-of-type{ border-top: none; }
 
-  .hero .sub{
-    margin: 0;
-    color: var(--muted);
-    max-width: 90ch;
-  }
+.eq .lhs{
+  min-width: 120px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.88);
+}
 
-  .meta-grid{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 14px;
-    margin-top: 18px;
-  }
-  .pill{
-    grid-column: span 6;
-    border: 1px solid var(--stroke);
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 14px 14px;
-  }
-  @media (min-width: 900px){
-    .pill{ grid-column: span 3; }
-  }
-  .pill .k{
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted2);
-    margin-bottom: 6px;
-  }
-  .pill .v{
-    font-weight: 650;
-    color: var(--text);
-  }
+.eq .rhs{
+  flex: 1;
+  color: rgba(255,255,255,0.84);
+}
 
-  .toc{
-    border: 1px solid var(--stroke);
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 16px 16px;
-    margin: 16px 0 26px 0;
-  }
-  .toc strong{ display:block; margin-bottom: 8px; }
-  .toc a{ color: var(--accent); text-decoration: none; }
-  .toc a:hover{ text-decoration: underline; }
+.eq .rhs em{
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 700;
+}
 
-  .section{
-    border: 1px solid var(--stroke);
-    background: var(--card);
-    border-radius: var(--radius);
-    padding: 22px 20px;
-    margin: 16px 0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-  }
-  .section h2{
-    margin: 0 0 12px 0;
-    font-size: 1.35rem;
-    letter-spacing: -0.01em;
-  }
-  .section h3{
-    margin: 18px 0 10px 0;
-    font-size: 1.05rem;
-    color: var(--text);
-  }
-  .muted{ color: var(--muted); }
+.eq .rhs .subtle{
+  color: var(--muted2);
+  font-weight: 500;
+}
 
-  .callout{
-    border: 1px solid var(--stroke);
-    background: linear-gradient(135deg, rgba(120,205,255,0.12), rgba(255,255,255,0.04));
-    border-radius: var(--radius);
-    padding: 14px 14px;
-    margin: 12px 0;
-  }
-  .callout b{ color: var(--accent); }
+.eq .rhs .final{
+  color: var(--accent2);
+  font-weight: 800;
+}
 
-  .grid2{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  @media (min-width: 900px){
-    .grid2{ grid-template-columns: 1fr 1fr; }
-  }
+@media (max-width: 700px){
+  .eq .line{ flex-direction: column; gap: 6px; }
+  .eq .lhs{ min-width: auto; }
+}
+/* ---------- Pretty wide tables that scroll nicely ---------- */
+.table-wrap{
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid var(--stroke);
+  background: rgba(0,0,0,0.14);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  margin: 12px 0 6px 0;
+}
 
-  .eq{
-    font-family: var(--mono);
-    background: rgba(0,0,0,0.25);
-    border: 1px solid var(--stroke);
-    border-radius: 14px;
-    padding: 12px 12px;
-    overflow-x: auto;
-    margin: 10px 0;
-  }
+.table-wrap table{
+  min-width: 1100px; /* forces scroll instead of ugly wrapping */
+  border: none;
+  margin: 0;
+}
 
-  table{
-    width: 100%;
-    border-collapse: collapse;
-    margin: 10px 0 4px 0;
-    overflow: hidden;
-    border-radius: 14px;
-    border: 1px solid var(--stroke);
-    background: rgba(0,0,0,0.18);
-  }
-  th, td{
-    border-bottom: 1px solid rgba(255,255,255,0.10);
-    padding: 10px 10px;
-    vertical-align: top;
-  }
-  th{
-    text-align:left;
-    color: rgba(255,255,255,0.88);
-    background: rgba(255,255,255,0.06);
-    font-weight: 650;
-  }
-  td{ color: rgba(255,255,255,0.85); }
+.table-wrap th{
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.09);
+  backdrop-filter: blur(6px);
+  z-index: 1;
+}
 
-  details{
-    border: 1px solid var(--stroke);
-    border-radius: var(--radius);
-    background: var(--card2);
-    padding: 12px 14px;
-    margin: 10px 0;
-  }
-  summary{
-    cursor: pointer;
-    font-weight: 700;
-    color: var(--accent2);
-  }
-  details p, details li{ color: var(--muted); }
+.table-wrap td, .table-wrap th{
+  padding: 10px 12px;
+  white-space: nowrap; /* prevents broken wrapping */
+}
 
-  .foot{
-    color: var(--muted2);
-    font-size: 0.95rem;
-    margin-top: 18px;
-  }
-  .tag{
-    display:inline-block;
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    padding: 2px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--stroke);
-    background: rgba(0,0,0,0.25);
-    color: rgba(255,255,255,0.82);
-    margin-right: 6px;
-    margin-top: 6px;
-  }
+.table-wrap td:first-child, .table-wrap th:first-child{
+  white-space: normal; /* allow the Case name to wrap */
+  min-width: 240px;
+}
+
+.section h2{
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+}
 </style>
+
 
 <div class="thermo-wrap">
 
@@ -287,12 +198,122 @@ permalink: /projects/2025-thermo/
 
     <div class="grid2">
       <div class="eq">
-Q̇L (from compartments) → [Evaporator] → [Compressor] → [Condenser] → [Throttle] → back to Evaporator<br/>
-Electrical work input: Ẇin<br/>
-Heat rejected to kitchen: Q̇H
-      </div>
+  <div class="eq-title">Case 2 — Baseline Tight Cabinetry (Tc = 50°C)</div>
 
-      <div class="eq">
+  <div class="line">
+    <div class="lhs">Given</div>
+    <div class="rhs">
+      State 1: P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, T₁ = 247.15 K
+      <span class="subtle"> (sat vapor at Te = −26°C)</span>
+      <br/>
+      State 3: P₃ = 6.887 bar, h₃ = 322.16 kJ/kg <span class="subtle">(interp. at Tc = 50°C)</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Pressure ratio</div>
+    <div class="rhs">
+      rₚ = P_high / P_low = 6.887 / 0.559 = <span class="final">12.32</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Exponent</div>
+    <div class="rhs">
+      (k−1)/k = (1.105−1)/1.105 = <em>0.09502</em>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Isentropic T₂s</div>
+    <div class="rhs">
+      T₂s = T₁·(rₚ)^((k−1)/k) = 247.15·(12.32)^0.09502 = <span class="final">313.76 K</span>
+      <span class="subtle">(≈ 40.61°C)</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Δh_is</div>
+    <div class="rhs">
+      Δh_is = cₚ·(T₂s − T₁) = 1.692·(313.76 − 247.15) = <span class="final">112.70 kJ/kg</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">w_in, h₂</div>
+    <div class="rhs">
+      w_in = Δh_is/η_is = 112.70/0.70 = <span class="final">161.00 kJ/kg</span><br/>
+      h₂ = h₁ + w_in = 519.67 + 161.00 = <span class="final">680.67 kJ/kg</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Throttle</div>
+    <div class="rhs">
+      h₄ = h₃ = <span class="final">322.16 kJ/kg</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">q_L</div>
+    <div class="rhs">
+      q_L = h₁ − h₄ = 519.67 − 322.16 = <span class="final">197.51 kJ/kg</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">COP</div>
+    <div class="rhs">
+      COP_R = q_L / w_in = 197.51 / 161.00 = <span class="final">1.227 ≈ 1.23</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Power</div>
+    <div class="rhs">
+      Ẇ_avg = 817,000 Wh / 8766 hr = <span class="final">93.19 W</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Cooling rate</div>
+    <div class="rhs">
+      Q̇_L = COP·Ẇ = 1.227·93.19 = <span class="final">114.37 W</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">ṁ</div>
+    <div class="rhs">
+      ṁ = Q̇_L / q_L = 114.37 / 197,510 = <span class="final">0.000579 kg/s = 0.579 g/s</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Heat out</div>
+    <div class="rhs">
+      Q̇_H = Q̇_L + Ẇ = 114.37 + 93.19 = <span class="final">207.56 W</span>
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Second Law</div>
+    <div class="rhs">
+      T_L = 255.37 K, T_H = 299.26 K<br/>
+      Ṡ_gen = Q̇_H/T_H − Q̇_L/T_L = 207.56/299.26 − 114.37/255.37
+      = <span class="final">0.2460 W/K ≥ 0</span> ✓
+    </div>
+  </div>
+
+  <div class="line">
+    <div class="lhs">Carnot bound</div>
+    <div class="rhs">
+      COP_Carnot = T_L/(T_H−T_L) = 255.37/(299.26−255.37) = <span class="final">5.82</span><br/>
+      η_II = COP_actual/COP_Carnot = 1.227/5.82 = <span class="final">0.211 ≈ 21.1%</span>
+    </div>
+  </div>
+</div>
+
 Overall control-volume view (sealed loop):<br/>
 Cold spaces (Fridge + Freezer): heat in Q̇L<br/>
 Kitchen air (79°F): heat out Q̇H<br/>
@@ -551,33 +572,37 @@ Ṡ_gen = 194.7/299.26 − 101.5/255.37 = 0.2532 W/K ≥ 0 ✓
       <p class="foot muted">Case 3 steps and numbers are copied from the report. :contentReference[oaicite:15]{index=15}</p>
     </details>
 
-    <h3>Summary table (all cases)</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>Case</th><th>Tc (°C)</th><th>P_high (bar)</th><th>P ratio</th>
-          <th>w_in (kJ/kg)</th><th>q_L (kJ/kg)</th><th>COP_R</th>
-          <th>Q̇_L (W)</th><th>Q̇_H (W)</th><th>ṁ (g/s)</th><th>Ṡ_gen (W/K)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Clean / better airflow</td><td>45</td><td>6.044</td><td>10.81</td>
-          <td>150.21</td><td>210.60</td><td>1.40</td>
-          <td>130.7</td><td>223.9</td><td>0.620</td><td>0.2365</td>
-        </tr>
-        <tr>
-          <td>Baseline (tight cabinetry)</td><td>50</td><td>6.887</td><td>12.32</td>
-          <td>161.00</td><td>197.51</td><td>1.23</td>
-          <td>114.4</td><td>207.6</td><td>0.579</td><td>0.2460</td>
-        </tr>
-        <tr>
-          <td>Restricted airflow (dust/blocked)</td><td>55</td><td>7.730</td><td>13.83</td>
-          <td>169.37</td><td>184.42</td><td>1.09</td>
-          <td>101.5</td><td>194.7</td><td>0.550</td><td>0.2532</td>
-        </tr>
-      </tbody>
-    </table>
+<h3>Summary table (all cases)</h3>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Case</th><th>Tc (°C)</th><th>P_high (bar)</th><th>P ratio</th>
+        <th>w_in (kJ/kg)</th><th>q_L (kJ/kg)</th><th>COP_R</th>
+        <th>Q̇_L (W)</th><th>Q̇_H (W)</th><th>ṁ (g/s)</th><th>Ṡ_gen (W/K)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Clean / better airflow</td><td>45</td><td>6.044</td><td>10.81</td>
+        <td>150.21</td><td>210.60</td><td>1.40</td>
+        <td>130.7</td><td>223.9</td><td>0.620</td><td>0.2365</td>
+      </tr>
+      <tr>
+        <td><strong>Baseline (tight cabinetry)</strong></td><td><strong>50</strong></td><td><strong>6.887</strong></td><td><strong>12.32</strong></td>
+        <td><strong>161.00</strong></td><td><strong>197.51</strong></td><td><strong>1.23</strong></td>
+        <td><strong>114.4</strong></td><td><strong>207.6</strong></td><td><strong>0.579</strong></td><td><strong>0.2460</strong></td>
+      </tr>
+      <tr>
+        <td>Restricted airflow (dust/blocked)</td><td>55</td><td>7.730</td><td>13.83</td>
+        <td>169.37</td><td>184.42</td><td>1.09</td>
+        <td>101.5</td><td>194.7</td><td>0.550</td><td>0.2532</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
     <p class="foot muted">Table values match the report. :contentReference[oaicite:16]{index=16}</p>
 
   </div>
