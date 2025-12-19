@@ -7,142 +7,107 @@ image: /assets/images/subzero-fridge.jpg
 ---
 
 <style>
-/* =========================================================
-   PDF-STYLE REPORT THEME (page looks like your PDF)
-========================================================= */
+/* ===== Bigger type + Cornell-ish color accents ===== */
 
-/* Make the site background feel like a PDF viewer */
-main.container{
-  max-width: 100% !important;
-  padding-left: 12px !important;
-  padding-right: 12px !important;
-}
-
-/* Paper shell */
 .pdf-shell{
-  background: #f3f4f6;
-  padding: 26px 0;
+  background: #eef2f7; /* light bluish gray */
 }
 
-/* The "paper" itself */
+/* Slightly wider paper and bigger padding */
 .pdf-page{
-  background: #ffffff;
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 46px 54px;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
-  color: #111827;
-  font-family: "Times New Roman", Times, serif;
-  line-height: 1.45;
-}
+  max-width: 980px;
+  padding: 54px 62px;
 
-/* Titles */
-.pdf-page h1{
-  font-size: 28px;
-  margin: 0 0 10px 0;
-  font-weight: 700;
-  text-align: left;
-}
-.pdf-subhead{
-  font-size: 15px;
-  margin: 0 0 18px 0;
-}
-.pdf-subhead b{
-  font-weight: 700;
-}
-
-/* Section headers like the PDF */
-.pdf-page h2{
+  /* make all text bigger */
   font-size: 18px;
-  margin: 18px 0 8px 0;
-  font-weight: 700;
+  line-height: 1.55;
+
+  /* subtle tinted paper edge */
+  border: 1px solid #dbe4f0;
 }
+
+/* Title: bigger + navy */
+.pdf-page h1{
+  font-size: 34px;
+  color: #0b2a4a;  /* deep navy */
+  letter-spacing: -0.02em;
+}
+
+/* Subhead: slightly muted */
+.pdf-subhead{
+  font-size: 17px;
+  color: #22354a;
+}
+
+/* Section headers: colored + underline */
+.pdf-page h2{
+  font-size: 22px;
+  color: #123a63;
+  margin-top: 22px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid #cfe0f6;
+}
+
 .pdf-page h3{
-  font-size: 16px;
-  margin: 12px 0 6px 0;
-  font-weight: 700;
+  font-size: 19px;
+  color: #1b4d85;
+  margin-top: 16px;
 }
 
-/* Horizontal rule */
+/* Cleaner rule */
 .pdf-hr{
-  border: none;
-  border-top: 1px solid #d1d5db;
-  margin: 14px 0;
+  border-top: 1px solid #cfd9e6;
 }
 
-/* Tables: clean report look */
+/* Tables: slightly larger + blue header */
 .pdf-page table{
-  width: 100%;
-  border-collapse: collapse;
-  margin: 8px 0 10px 0;
-  font-size: 14px;
+  font-size: 16px;
 }
-.pdf-page th, .pdf-page td{
-  border: 1px solid #d1d5db;
-  padding: 7px 8px;
-  vertical-align: top;
-}
+
 .pdf-page th{
-  background: #f9fafb;
-  font-weight: 700;
-  text-align: left;
-}
-.caption{
-  font-size: 13px;
-  color: #374151;
-  margin-top: 4px;
+  background: #eaf2ff;
+  color: #0b2a4a;
+  border-color: #cbd8ea;
 }
 
-/* Figures (optional if you have the images) */
-.figure{
-  margin: 10px 0 14px 0;
-}
-.figure img{
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #e5e7eb;
-}
-.figcap{
-  font-size: 13px;
-  color: #374151;
-  margin-top: 6px;
+.pdf-page td{
+  border-color: #d3dbe7;
 }
 
-/* Equations: NOT code; look like report math blocks */
+/* Equation blocks: blue accent bar + readable text */
 .eqblock{
-  border-left: 3px solid #111827;
-  padding: 8px 12px;
-  margin: 8px 0 10px 0;
-  background: #fbfbfb;
+  border-left: 5px solid #2f6fb6;     /* accent blue */
+  background: #f5f9ff;
+  padding: 12px 14px;
+  margin: 12px 0 14px 0;
 }
+
 .eqline{
-  font-size: 14px;
-  margin: 2px 0;
-  white-space: normal;
-}
-.eqline b{ font-weight: 700; }
-
-/* Bullets closer to PDF */
-.pdf-page ul{
-  margin: 6px 0 10px 20px;
-}
-.pdf-page li{
-  margin: 3px 0;
+  font-size: 16.5px;
 }
 
-/* Monospace only for small inline symbols if needed */
-.mono{
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.98em;
+/* Caption: bigger + nicer color */
+.caption, .figcap{
+  font-size: 15px;
+  color: #3b4b60;
 }
 
-/* Responsive paper padding */
+/* Highlight important values (optional) */
+strong, b{
+  color: #0b2a4a;
+}
+
+/* Responsive */
 @media (max-width: 720px){
   .pdf-page{
-    padding: 28px 18px;
+    padding: 30px 18px;
+    font-size: 17px;
   }
+  .pdf-page h1{ font-size: 28px; }
+  .pdf-page h2{ font-size: 20px; }
+  .pdf-page h3{ font-size: 18px; }
 }
+
 </style>
 
 <div class="pdf-shell">
