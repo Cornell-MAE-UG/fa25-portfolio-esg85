@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: project
 title: Thermodynamics Portfolio - Sub-Zero Refrigerator Analysis
 description: Vapor-Compression Refrigeration Cycle Analysis
 technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
