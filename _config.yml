@@ -14,6 +14,7 @@ subtitle                 : # site tagline that appears below site title in masth
 name                     : Eva Gottesfeld
 description              : Eva Gottesfeld - Projects and CV 
 baseurl                  : "/fa25-portfolio-esg85"
+url: "https://cornell-mae-ug.github.io"
 
 # Theme and Style
 theme: jekyll-theme-minimal
