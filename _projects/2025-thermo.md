@@ -7,255 +7,152 @@ image: /assets/images/sub-zero-closed.png
 ---
 
 <style>
-/* ===== Bigger type + Cornell-ish color accents ===== */
-
-.pdf-shell{
-  background: #eef2f7; /* light bluish gray */
-}
-
-/* Slightly wider paper and bigger padding */
-.pdf-page{
-  background: #f8fafc;
-  max-width: 1400px;     /* wider than before */
-  width: 94vw;           /* fill most of the screen */
-  margin: 0 auto;
-  padding: 64px 80px;
-
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  border: 2px solid #94a3b8;
-
-  font-size: 19px;
-  line-height: 1.6;
-  color: #0b1220;
-}
-@media (max-width: 900px){
-  .pdf-page{
-    width: 96vw;
-    padding: 32px 20px;
-    font-size: 17.5px;
-  }
-}
-
-/* Title: bigger + navy */
-.pdf-page h1{
-  font-size: 34px;
-  color: #0b2a4a;  /* deep navy */
-  letter-spacing: -0.02em;
-}
-
-/* Subhead: slightly muted */
-.pdf-subhead{
-  font-size: 17px;
-  color: #22354a;
-}
-
-/* Section headers: colored + underline */
-.pdf-page h2{
-  font-size: 22px;
-  color: #123a63;
-  margin-top: 22px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid #cfe0f6;
-}
-
-.pdf-page h3{
-  font-size: 19px;
-  color: #1b4d85;
-  margin-top: 16px;
-}
-
-/* Cleaner rule */
-.pdf-hr{
-  border-top: 1px solid #cfd9e6;
-}
-
-/* Tables: slightly larger + blue header */
-.pdf-page table{
-  font-size: 16px;
-}
-
-.pdf-page th{
-  background: #eaf2ff;
-  color: #0b2a4a;
-  border-color: #cbd8ea;
-}
-
-.pdf-page td{
-  border-color: #d3dbe7;
-}
-
-/* Equation blocks: blue accent bar + readable text */
-.eqblock{
-  border-left: 5px solid #2f6fb6;     /* accent blue */
-  background: #f5f9ff;
-  padding: 12px 14px;
-  margin: 12px 0 14px 0;
-}
-
-.eqline{
-  font-size: 16.5px;
-}
-
-/* Caption: bigger + nicer color */
-.caption, .figcap{
-  font-size: 15px;
-  color: #3b4b60;
-}
-
-/* Highlight important values (optional) */
-strong, b{
-  color: #0b2a4a;
-}
-
-/* Responsive */
-@media (max-width: 720px){
-  .pdf-page{
-    padding: 30px 18px;
-    font-size: 17px;
-  }
-  .pdf-page h1{ font-size: 28px; }
-  .pdf-page h2{ font-size: 20px; }
-  .pdf-page h3{ font-size: 18px; }
-}
 /* ===============================
-   FORCE FULL-PAGE BACKGROUND
+   FULL-WIDTH THERMO REPORT STYLE
+   (single source of truth)
 ================================ */
 
-/* Kill Bootstrap's white container */
-main.container{
+/* Make sure Bootstrap container isn't limiting you */
+main.container,
+main.container-fluid{
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   background: transparent !important;
 }
 
-/* Dark tinted site background */
+/* Page background */
 body{
   background: linear-gradient(
     180deg,
-    #1372d0ff 0%,   /* deep navy */
-    #027aebff 45%,  /* classic navy */
-    #0c70d4ff 100%  /* darker navy */
+    #1372d0 0%,
+    #027aeb 45%,
+    #0c70d4 100%
   ) !important;
 }
 
-
-/* Centered paper card (non-white background visible) */
+/* Outer wrapper: gives small breathing room */
 .pdf-shell{
-  background: transparent !important;
-  padding: 48px 0;
+  width: 100%;
+  padding: 18px 16px 40px;  /* left/right margin so it doesn't touch edges */
+  display: flex;
+  justify-content: center;
 }
 
-/* Light paper contrast */
+/* The report panel: WIDE */
 .pdf-page{
-  background: #f8fafc;          /* NOT pure white */
-  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-/* Bigger, higher-contrast text */
-.pdf-page{
+  width: 100% !important;         /* take full available width */
+  max-width: 1700px !important;   /* "screen sized" on large monitors */
+  margin: 0 auto !important;
+
+  background: #f8fafc;
+  padding: 56px 72px;
+  border-radius: 16px;
+  border: 2px solid #94a3b8;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+
   font-size: 19px;
+  line-height: 1.65;
   color: #0b1220;
 }
 
+/* Headings */
 .pdf-page h1{
-  color: #1e3a8a;
+  font-size: 36px;
+  color: #0b2a4a;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
 }
-
+.pdf-subhead{
+  font-size: 17px;
+  color: #22354a;
+  margin-bottom: 18px;
+}
 .pdf-page h2{
-  color: #1d4ed8;
+  font-size: 22px;
+  color: #123a63;
+  margin-top: 24px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #cfe0f6;
 }
-
 .pdf-page h3{
-  color: #2563eb;
+  font-size: 19px;
+  color: #1b4d85;
+  margin-top: 18px;
 }
 
-.eqblock{
-  background: #eaf2ff;
-  border-left-color: #2563eb;
-}
-
-.pdf-page table th{
-  background: #dbeafe;
-}
-/* ===============================
-   HIGH-CONTRAST LINES & DIVIDERS
-================================ */
-
-/* Section divider lines */
+/* Divider line */
 .pdf-hr{
-  border-top: 2px solid #94a3b8; /* slate-400 */
+  border: none;
+  border-top: 2px solid #94a3b8;
+  margin: 18px 0;
   opacity: 1;
 }
 
-/* Table borders: darker + clearer */
+/* Tables: FULL WIDTH of the report panel (THIS is the key change) */
 .pdf-page table{
+  width: 100% !important;         /* fill the report panel */
+  margin: 14px 0 !important;      /* no auto-centering needed */
+  border-collapse: collapse;
+  font-size: 16px;
   border: 2px solid #94a3b8;
 }
 
 .pdf-page th,
 .pdf-page td{
   border: 1.5px solid #94a3b8;
+  padding: 8px 10px;
+  vertical-align: top;
 }
 
-/* Table header stronger contrast */
 .pdf-page th{
-  background: #c7d2fe; /* indigo-200 */
+  background: #c7d2fe;
   color: #020617;
+  font-weight: 700;
 }
 
-/* Equation blocks: stronger edge */
+/* Equation blocks */
 .eqblock{
-  border-left: 6px solid #2563eb; /* blue-600 */
+  border-left: 6px solid #2563eb;
   background: #eef2ff;
+  padding: 12px 14px;
+  margin: 12px 0 14px 0;
+}
+.eqline{ font-size: 16.5px; }
+
+/* Captions */
+.caption, .figcap{
+  font-size: 15px;
+  color: #3b4b60;
 }
 
-/* Figure borders */
+/* Emphasis */
+strong, b{ color: #0b2a4a; }
+
+/* Images */
 .figure img{
+  max-width: 100%;
+  height: auto;
   border: 2px solid #94a3b8;
+  border-radius: 12px;
 }
-@media (max-width: 900px){
+
+/* Responsive */
+@media (max-width: 1100px){
+  .pdf-page{ padding: 40px 28px; }
+}
+@media (max-width: 720px){
+  .pdf-shell{ padding: 14px 10px 28px; }
   .pdf-page{
-    width: 96vw;
-    padding: 32px 20px;
+    padding: 28px 16px;
     font-size: 17.5px;
   }
+  .pdf-page h1{ font-size: 28px; }
+  .pdf-page h2{ font-size: 20px; }
+  .pdf-page h3{ font-size: 18px; }
 }
-/* === FORCE PERFECT CENTERING === */
-
-/* Remove Bootstrap container constraints */
-main.container{
-  max-width: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Center the PDF page horizontally */
-.pdf-shell{
-  display: flex;
-  justify-content: center;
-}
-
-/* Ensure the paper is truly centered */
-.pdf-page{
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-/* Center all tables within the report panel */
-.pdf-page table{
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Optional: keep most tables from stretching too wide */
-.pdf-page table:not(.full-width){
-  width: min(100%, 900px);
-}
-.pdf-page table{
-  width: min(900px, 100%) !important;  /* key: less than the paper width */
-  margin: 14px auto !important;        /* centers it */
-}
-
 </style>
+
 
 <div class="pdf-shell">
 <article class="pdf-page">
@@ -263,21 +160,20 @@ main.container{
 <h1>Thermodynamics Portfolio: Sub Zero Refridgerator</h1>
 <p class="pdf-subhead">
 <b>Specific device:</b> Sub-Zero CL4850SID/S (48-inch built-in side-by-side refrigerator/freezer, internal dispenser)<br/>
-<b>Course text:</b> Moran &amp; Shapiro, <i>Fundamentals of Engineering Thermodynamics</i>, Ch. 1–10
 </p>
 
 <hr class="pdf-hr"/>
 
 <h2>1. Personal Background &amp; Motivation</h2>
 <p>
-This refrigerator is the unit installed in my own home, making it a system I interact with daily. Through regular use, I have found that it maintains food freshness longer than other refrigerators I have previously used. Its familiarity and real-world operation make it a strong candidate for connecting the vapor-compression refrigeration concepts from this course (control volumes, the First Law, the Second Law, and COP) to a practical engineered product.
+This refrigerator is the unit installed in my own home, making it a system I interact with daily when I am at home. Through regular use, I have found that it maintains food freshness longer than other refrigerators my family has previously used. Its familiarity and real-world operation make are the reason I chose it for connecting the vapor-compression refrigeration concepts from this course (control volumes, the First Law, the Second Law, and COP).
 </p>
 
 <hr class="pdf-hr"/>
 
 <h2>2. Device Overview and Real Operating Context</h2>
 <p>
-My home kitchen/room temperature is approximately <b>79°F (26.1°C)</b>. The unit is installed in tight cabinetry, which can reduce airflow across the condenser and increase the condensing temperature and compressor work. This report quantifies how that mechanism affects performance using a state-point cycle model and the device's published annual electricity use.
+My home kitchen/room temperature is approximately <b>79°F (26.1°C)</b>. The unit is installed in tight cabinetry, which can reduce airflow across the condenser and increase the condensing temperature and compressor work. This report quantifies how that mechanism affects performance using a refridgeration cycle model and the device's published annual electricity use.
 </p>
 
 <table>
