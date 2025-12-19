@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Eva Gottesfeld - Portfolio
+title: Eva Gottesfeld
 permalink: /projects/
 ---
 
