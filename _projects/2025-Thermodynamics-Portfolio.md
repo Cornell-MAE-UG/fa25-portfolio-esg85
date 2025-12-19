@@ -1,705 +1,470 @@
 ---
 layout: project
-title: "Thermodynamics Portfolio — Sub-Zero Refrigerator Cycle Analysis"
-description: "Above-and-beyond vapor-compression refrigeration cycle analysis (real numbers, state points, COP, Second Law)."
-technologies: [Thermodynamics, Vapor-Compression, R-600a, First Law, Second Law, COP]
+title: Thermodynamics Portfolio: Above-and-Beyond Cycle Analysis
+description: Vapor-Compression Refrigeration Cycle Analysis
+technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
 image: /assets/images/subzero-fridge.jpg
-
 ---
 
-<!-- =========================================================
-  Elegant self-contained styling (safe for GitHub Pages)
-========================================================== -->
 <style>
-/* ... keep your existing :root and other styles ... */
+/* =========================================================
+   PDF-STYLE REPORT THEME (page looks like your PDF)
+========================================================= */
 
-/* ---------- Elegant equation formatting (NOT code-looking) ---------- */
-.eq{
-  font-family: var(--sans);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--stroke);
-  border-radius: 14px;
-  padding: 14px 14px;
-  margin: 12px 0;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+/* Make the site background feel like a PDF viewer */
+main.container{
+  max-width: 100% !important;
+  padding-left: 12px !important;
+  padding-right: 12px !important;
 }
 
-.eq .eq-title{
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted2);
-  margin-bottom: 10px;
+/* Paper shell */
+.pdf-shell{
+  background: #f3f4f6;
+  padding: 26px 0;
 }
 
-.eq .line{
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-  padding: 6px 0;
-  border-top: 1px dashed rgba(255,255,255,0.10);
+/* The "paper" itself */
+.pdf-page{
+  background: #ffffff;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 46px 54px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.12);
+  color: #111827;
+  font-family: "Times New Roman", Times, serif;
+  line-height: 1.45;
 }
-.eq .line:first-of-type{ border-top: none; }
 
-.eq .lhs{
-  min-width: 120px;
+/* Titles */
+.pdf-page h1{
+  font-size: 28px;
+  margin: 0 0 10px 0;
   font-weight: 700;
-  color: rgba(255,255,255,0.88);
+  text-align: left;
 }
-
-.eq .rhs{
-  flex: 1;
-  color: rgba(255,255,255,0.84);
+.pdf-subhead{
+  font-size: 15px;
+  margin: 0 0 18px 0;
 }
-
-.eq .rhs em{
-  font-style: normal;
-  color: var(--accent);
+.pdf-subhead b{
   font-weight: 700;
 }
 
-.eq .rhs .subtle{
-  color: var(--muted2);
-  font-weight: 500;
+/* Section headers like the PDF */
+.pdf-page h2{
+  font-size: 18px;
+  margin: 18px 0 8px 0;
+  font-weight: 700;
 }
-
-.eq .rhs .final{
-  color: var(--accent2);
-  font-weight: 800;
-}
-
-@media (max-width: 700px){
-  .eq .line{ flex-direction: column; gap: 6px; }
-  .eq .lhs{ min-width: auto; }
-}
-/* ---------- Pretty wide tables that scroll nicely ---------- */
-.table-wrap{
-  overflow-x: auto;
-  border-radius: 16px;
-  border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.14);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+.pdf-page h3{
+  font-size: 16px;
   margin: 12px 0 6px 0;
+  font-weight: 700;
 }
 
-.table-wrap table{
-  min-width: 1100px; /* forces scroll instead of ugly wrapping */
+/* Horizontal rule */
+.pdf-hr{
   border: none;
-  margin: 0;
+  border-top: 1px solid #d1d5db;
+  margin: 14px 0;
 }
 
-.table-wrap th{
-  position: sticky;
-  top: 0;
-  background: rgba(255,255,255,0.09);
-  backdrop-filter: blur(6px);
-  z-index: 1;
+/* Tables: clean report look */
+.pdf-page table{
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 10px 0;
+  font-size: 14px;
+}
+.pdf-page th, .pdf-page td{
+  border: 1px solid #d1d5db;
+  padding: 7px 8px;
+  vertical-align: top;
+}
+.pdf-page th{
+  background: #f9fafb;
+  font-weight: 700;
+  text-align: left;
+}
+.caption{
+  font-size: 13px;
+  color: #374151;
+  margin-top: 4px;
 }
 
-.table-wrap td, .table-wrap th{
-  padding: 10px 12px;
-  white-space: nowrap; /* prevents broken wrapping */
+/* Figures (optional if you have the images) */
+.figure{
+  margin: 10px 0 14px 0;
+}
+.figure img{
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #e5e7eb;
+}
+.figcap{
+  font-size: 13px;
+  color: #374151;
+  margin-top: 6px;
 }
 
-.table-wrap td:first-child, .table-wrap th:first-child{
-  white-space: normal; /* allow the Case name to wrap */
-  min-width: 240px;
+/* Equations: NOT code; look like report math blocks */
+.eqblock{
+  border-left: 3px solid #111827;
+  padding: 8px 12px;
+  margin: 8px 0 10px 0;
+  background: #fbfbfb;
+}
+.eqline{
+  font-size: 14px;
+  margin: 2px 0;
+  white-space: normal;
+}
+.eqline b{ font-weight: 700; }
+
+/* Bullets closer to PDF */
+.pdf-page ul{
+  margin: 6px 0 10px 20px;
+}
+.pdf-page li{
+  margin: 3px 0;
 }
 
-.section h2{
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.10);
+/* Monospace only for small inline symbols if needed */
+.mono{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.98em;
+}
+
+/* Responsive paper padding */
+@media (max-width: 720px){
+  .pdf-page{
+    padding: 28px 18px;
+  }
 }
 </style>
 
+<div class="pdf-shell">
+<article class="pdf-page">
 
-<div class="thermo-wrap">
+<h1>Thermodynamics Portfolio: Above-and-Beyond Cycle Analysis</h1>
+<p class="pdf-subhead">
+<b>Specific device:</b> Sub-Zero CL4850SID/S (48-inch built-in side-by-side refrigerator/freezer, internal dispenser)<br/>
+<b>Course text:</b> Moran &amp; Shapiro, <i>Fundamentals of Engineering Thermodynamics</i>, Ch. 1–10
+</p>
 
-  <div class="hero">
-    <h1>Thermodynamics Portfolio: Above-and-Beyond Vapor-Compression Cycle Analysis</h1>
-    <p class="sub">
-      <b>Device:</b> Sub-Zero CL4850SID/S (48" built-in side-by-side refrigerator/freezer, internal dispenser).<br/>
-      <b>Course text:</b> Moran &amp; Shapiro, <i>Fundamentals of Engineering Thermodynamics</i>, Ch. 1–10.
-    </p>
+<hr class="pdf-hr"/>
 
-    <div class="meta-grid">
-      <div class="pill"><div class="k">Ambient</div><div class="v">79°F (26.1°C), built into tight cabinetry</div></div>
-      <div class="pill"><div class="k">Annual energy</div><div class="v">817 kWh/yr</div></div>
-      <div class="pill"><div class="k">Avg electrical input</div><div class="v">≈ 93.2 W</div></div>
-      <div class="pill"><div class="k">Setpoints</div><div class="v">38°F fridge / 0°F freezer</div></div>
-    </div>
+<h2>1. Personal Background &amp; Motivation</h2>
+<p>
+This refrigerator is the refrigerator installed in my own home. In everyday use, I feel it keeps food fresh for longer than other refrigerators I have used. Because it is a real appliance I interact with daily, it is a good candidate for connecting the vapor-compression refrigeration theory from this course (control volumes, First Law, Second Law, and COP) to a real engineered product.
+</p>
 
-    <p class="foot">
-      All numeric assumptions, state-point values, and results on this page are transcribed from (and consistent with) the submitted report :contentReference[oaicite:1]{index=1}.
-    </p>
-  </div>
+<hr class="pdf-hr"/>
 
-  <div class="toc">
-    <strong>Contents</strong>
-    <div>
-      <a href="#motivation">1. Personal Background & Motivation</a> ·
-      <a href="#context">2. Device Overview & Operating Context</a> ·
-      <a href="#qual">3. Qualitative Description</a> ·
-      <a href="#balances">4. Governing Balances</a> ·
-      <a href="#model">5. State-Point Model</a> ·
-      <a href="#results">6. Full Cycle Calculations</a> ·
-      <a href="#designchange">7. Design/Operating Change Analysis</a> ·
-      <a href="#ua">8. Heat-Leak (UA) + Ambient Sensitivity</a> ·
-      <a href="#measurements">9. Optional Measurements</a> ·
-      <a href="#sources">10. Sources</a>
-    </div>
-  </div>
+<h2>2. Device Overview and Real Operating Context</h2>
+<p>
+My home kitchen/room temperature is approximately <b>79°F (26.1°C)</b>. The unit is installed in tight cabinetry, which can reduce airflow across the condenser and increase the condensing temperature and compressor work. This report quantifies how that mechanism affects performance using a state-point cycle model and the device's published annual electricity use.
+</p>
 
-  <!-- ========================================================= -->
-  <div id="motivation" class="section">
-    <h2>1. Personal Background & Motivation</h2>
-    <p class="muted">
-      This refrigerator is installed in my own home. In everyday use, I feel it keeps food fresh for longer than other refrigerators I have used.
-      Because it is a real appliance I interact with daily, it is a strong candidate for connecting vapor-compression refrigeration theory
-      (control volumes, First Law, Second Law, COP) to a real engineered product. :contentReference[oaicite:2]{index=2}
-    </p>
-  </div>
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>How used in calculations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Annual energy use</td>
+      <td><b>817 kWh/yr</b></td>
+      <td>Converted to time-average electrical power input</td>
+    </tr>
+    <tr>
+      <td>Average electrical input</td>
+      <td><b>93.3 W</b></td>
+      <td>Used with COP to estimate average cooling rate</td>
+    </tr>
+    <tr>
+      <td>Recommended setpoints</td>
+      <td><b>38°F fridge / 0°F freezer</b></td>
+      <td>Cold-side reference temperatures for entropy/COP bounds</td>
+    </tr>
+    <tr>
+      <td>Electrical supply</td>
+      <td><b>115 VAC, 60 Hz; 15 A circuit</b></td>
+      <td>Shows maximum available electrical power margin</td>
+    </tr>
+  </tbody>
+</table>
 
-  <!-- ========================================================= -->
-  <div id="context" class="section">
-    <h2>2. Device Overview & Real Operating Context</h2>
+<p class="caption">
+Source notes: Annual energy use and electrical info are from Sub-Zero product/spec pages and the EnergyGuide label; recommended setpoints are from the Sub-Zero Classic Use &amp; Care Guide.
+</p>
 
-    <div class="callout">
-      <b>Key idea:</b> Tight cabinetry can reduce airflow across the condenser → higher condensing temperature → higher compressor work → lower COP.
-      This page quantifies that mechanism using a state-point model plus published annual electricity use. :contentReference[oaicite:3]{index=3}
-    </div>
+<!-- Optional figure if you have it -->
+<!--
+<div class="figure">
+  <img src="{{ '/assets/images/subzero-front.jpg' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
+  <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator.</div>
+</div>
+-->
 
-    <table>
-      <thead>
-        <tr><th>Quantity</th><th>Value</th><th>How used in calculations</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Annual energy use</td><td>817 kWh/yr</td><td>Converted to time-average electrical power input</td></tr>
-        <tr><td>Average electrical input</td><td>≈ 93.3 W</td><td>Used with COP to estimate average cooling rate</td></tr>
-        <tr><td>Recommended setpoints</td><td>38°F fridge / 0°F freezer</td><td>Cold-side reference temperatures for entropy/COP bounds</td></tr>
-        <tr><td>Electrical supply</td><td>115 VAC, 60 Hz; 15 A circuit</td><td>Shows available electrical power margin</td></tr>
-      </tbody>
-    </table>
+<hr class="pdf-hr"/>
 
-    <p class="foot muted">
-      Source notes (as stated in the report): annual energy + electrical info from Sub-Zero product/spec pages and EnergyGuide; setpoints from the Sub-Zero Classic Use & Care Guide. :contentReference[oaicite:4]{index=4}
-    </p>
-  </div>
+<h2>3. Qualitative Description (How It Works)</h2>
+<p>
+Thermodynamically, the Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It removes heat from the refrigerator/freezer compartments (low-temperature region) and rejects that heat to the kitchen air (high-temperature region) using electrical work supplied to a compressor. The refrigerant circulates in a closed loop through four main components:
+</p>
+<ul>
+  <li><b>Evaporator</b> – Absorbs heat from food compartments</li>
+  <li><b>Compressor</b> – Increases pressure and temperature of refrigerant vapor</li>
+  <li><b>Condenser</b> – Rejects heat to kitchen air</li>
+  <li><b>Expansion device (throttle)</b> – Reduces pressure for refrigerant return</li>
+</ul>
 
-  <!-- ========================================================= -->
-  <div id="qual" class="section">
-    <h2>3. Qualitative Description (How It Works)</h2>
-
-    <p class="muted">
-      Thermodynamically, this Sub-Zero refrigerator operates as a vapor-compression refrigeration system: it removes heat from the refrigerator/freezer
-      compartments (low-temperature region) and rejects that heat to the kitchen air (high-temperature region) using electrical work supplied to a compressor.
-      The refrigerant circulates in a closed loop through four main components: <b>evaporator → compressor → condenser → expansion device (throttle)</b>. :contentReference[oaicite:5]{index=5}
-    </p>
-
-    <div class="grid2">
-      <div class="eq">
-  <div class="eq-title">Case 2 — Baseline Tight Cabinetry (Tc = 50°C)</div>
-
-  <div class="line">
-    <div class="lhs">Given</div>
-    <div class="rhs">
-      State 1: P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, T₁ = 247.15 K
-      <span class="subtle"> (sat vapor at Te = −26°C)</span>
-      <br/>
-      State 3: P₃ = 6.887 bar, h₃ = 322.16 kJ/kg <span class="subtle">(interp. at Tc = 50°C)</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Pressure ratio</div>
-    <div class="rhs">
-      rₚ = P_high / P_low = 6.887 / 0.559 = <span class="final">12.32</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Exponent</div>
-    <div class="rhs">
-      (k−1)/k = (1.105−1)/1.105 = <em>0.09502</em>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Isentropic T₂s</div>
-    <div class="rhs">
-      T₂s = T₁·(rₚ)^((k−1)/k) = 247.15·(12.32)^0.09502 = <span class="final">313.76 K</span>
-      <span class="subtle">(≈ 40.61°C)</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Δh_is</div>
-    <div class="rhs">
-      Δh_is = cₚ·(T₂s − T₁) = 1.692·(313.76 − 247.15) = <span class="final">112.70 kJ/kg</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">w_in, h₂</div>
-    <div class="rhs">
-      w_in = Δh_is/η_is = 112.70/0.70 = <span class="final">161.00 kJ/kg</span><br/>
-      h₂ = h₁ + w_in = 519.67 + 161.00 = <span class="final">680.67 kJ/kg</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Throttle</div>
-    <div class="rhs">
-      h₄ = h₃ = <span class="final">322.16 kJ/kg</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">q_L</div>
-    <div class="rhs">
-      q_L = h₁ − h₄ = 519.67 − 322.16 = <span class="final">197.51 kJ/kg</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">COP</div>
-    <div class="rhs">
-      COP_R = q_L / w_in = 197.51 / 161.00 = <span class="final">1.227 ≈ 1.23</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Power</div>
-    <div class="rhs">
-      Ẇ_avg = 817,000 Wh / 8766 hr = <span class="final">93.19 W</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Cooling rate</div>
-    <div class="rhs">
-      Q̇_L = COP·Ẇ = 1.227·93.19 = <span class="final">114.37 W</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">ṁ</div>
-    <div class="rhs">
-      ṁ = Q̇_L / q_L = 114.37 / 197,510 = <span class="final">0.000579 kg/s = 0.579 g/s</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Heat out</div>
-    <div class="rhs">
-      Q̇_H = Q̇_L + Ẇ = 114.37 + 93.19 = <span class="final">207.56 W</span>
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Second Law</div>
-    <div class="rhs">
-      T_L = 255.37 K, T_H = 299.26 K<br/>
-      Ṡ_gen = Q̇_H/T_H − Q̇_L/T_L = 207.56/299.26 − 114.37/255.37
-      = <span class="final">0.2460 W/K ≥ 0</span> ✓
-    </div>
-  </div>
-
-  <div class="line">
-    <div class="lhs">Carnot bound</div>
-    <div class="rhs">
-      COP_Carnot = T_L/(T_H−T_L) = 255.37/(299.26−255.37) = <span class="final">5.82</span><br/>
-      η_II = COP_actual/COP_Carnot = 1.227/5.82 = <span class="final">0.211 ≈ 21.1%</span>
-    </div>
-  </div>
+<div class="eqblock">
+  <div class="eqline"><b>Vapor-compression loop:</b> [Evaporator] → [Compressor] → [Condenser] → [Expansion Valve] → [Evaporator]</div>
+  <div class="eqline">Heat absorbed: Q̇<sub>L</sub> in (from compartments) &nbsp;&nbsp;|&nbsp;&nbsp; Work input: Ẇ<sub>in</sub> (electric) &nbsp;&nbsp;|&nbsp;&nbsp; Heat rejected: Q̇<sub>H</sub> out (to kitchen)</div>
 </div>
 
-Overall control-volume view (sealed loop):<br/>
-Cold spaces (Fridge + Freezer): heat in Q̇L<br/>
-Kitchen air (79°F): heat out Q̇H<br/>
-Compressor: work in Ẇin
-      </div>
-    </div>
-  </div>
+<hr class="pdf-hr"/>
 
-  <!-- ========================================================= -->
-  <div id="balances" class="section">
-    <h2>4. System Diagram & Governing Balances (Moran Ch. 4–5)</h2>
+<h2>4. System Diagram &amp; Governing Balances (Moran Ch. 4–5)</h2>
+<p>
+I model the sealed refrigeration loop as a steady-cycle control volume. The working fluid mass circulates internally, so net mass flow across the outer boundary is approximately zero. Heat and work cross the boundary.
+</p>
 
-    <p class="muted">
-      The sealed refrigeration loop is modeled as a steady-cycle control volume. Working-fluid mass circulates internally, so net mass flow across the
-      outer boundary is approximately zero. Heat and work cross the boundary. :contentReference[oaicite:6]{index=6}
-    </p>
-
-    <div class="eq">
-(1) Mass balance (overall sealed loop):  Σṁ_in − Σṁ_out = 0
-    </div>
-
-    <div class="eq">
-(2) Energy balance (steady-cycle First Law):  Q̇_H = Q̇_L + Ẇ_in
-    </div>
-
-    <div class="eq">
-(3) Entropy balance (Second Law, two-reservoir form):  Ṡ_gen = Q̇_H/T_H − Q̇_L/T_L  ≥  0
-    </div>
-
-    <div class="eq">
-(4) Performance metric (Moran Ch. 10):  COP_R = Q̇_L / Ẇ_in
-    </div>
-  </div>
-
-  <!-- ========================================================= -->
-  <div id="model" class="section">
-    <h2>5. State-Point Cycle Model with Real Numbers</h2>
-
-    <p class="muted">
-      A full manufacturer thermodynamic test map for this exact unit is not public, so this model uses:
-      (i) published annual electricity use, (ii) recommended compartment setpoints, (iii) a common low-GWP domestic refrigerant assumption (R-600a),
-      and (iv) published R-600a property tables. The goal is to compute key cycle quantities
-      (q<sub>L</sub>, w<sub>in</sub>, COP, ṁ, Q̇<sub>L</sub>, Q̇<sub>H</sub>) at representative operating temperatures and quantify sensitivity to condenser conditions. :contentReference[oaicite:7]{index=7}
-    </p>
-
-    <h3>Chosen representative temperatures</h3>
-    <ul class="muted">
-      <li><b>Evaporating saturation temperature:</b> T<sub>e</sub> = −26°C (colder than 0°F freezer air so heat can flow into the evaporator). :contentReference[oaicite:8]{index=8}</li>
-      <li><b>Condensing saturation temperature cases:</b> baseline T<sub>c</sub> = 50°C; compare cleaner/better-airflow at 45°C and restricted-airflow at 55°C. :contentReference[oaicite:9]{index=9}</li>
-    </ul>
-
-    <h3>State-property values used</h3>
-    <table>
-      <thead>
-        <tr><th>Quantity</th><th>Value</th><th>Meaning</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>P<sub>low</sub> @ −26°C</td><td>0.559 bar</td><td>Evaporator saturation pressure (State 1)</td></tr>
-        <tr><td>h<sub>1</sub> @ −26°C sat vapor</td><td>519.67 kJ/kg</td><td>Compressor inlet enthalpy (State 1)</td></tr>
-        <tr><td>s<sub>1</sub> @ −26°C sat vapor</td><td>2.3057 kJ/(kg·K)</td><td>Compressor inlet entropy (State 1)</td></tr>
-        <tr><td>h<sub>3</sub> @ 45°C sat liquid</td><td>309.07 kJ/kg</td><td>Condenser outlet enthalpy, clean case (State 3)</td></tr>
-        <tr><td>h<sub>3</sub> @ 50°C sat liquid (interp.)</td><td>322.16 kJ/kg</td><td>Condenser outlet enthalpy, baseline tight cabinetry (State 3)</td></tr>
-        <tr><td>h<sub>3</sub> @ 55°C sat liquid</td><td>335.25 kJ/kg</td><td>Condenser outlet enthalpy, restricted airflow (State 3)</td></tr>
-      </tbody>
-    </table>
-    <p class="foot muted">Values listed exactly as used in the report. :contentReference[oaicite:10]{index=10}</p>
-
-    <h3>Component energy relations (steady-flow CV, neglect Δke, Δpe)</h3>
-    <div class="eq">
-(5) Compressor: Ẇ_in ≈ ṁ (h₂ − h₁)<br/>
-(6) Condenser: Q̇_H ≈ ṁ (h₂ − h₃)<br/>
-(7) Throttle: h₄ ≈ h₃ (isenthalpic throttling)<br/>
-(8) Evaporator: Q̇_L ≈ ṁ (h₁ − h₄)
-    </div>
-  </div>
-
-  <!-- ========================================================= -->
-  <div id="results" class="section">
-    <h2>6. Step-by-Step Cycle Results (All Numbers)</h2>
-
-    <div class="callout">
-      <b>Compressor model:</b> ideal-gas approximation with constant c<sub>p</sub>, k and isentropic efficiency η<sub>is</sub> = 0.70. :contentReference[oaicite:11]{index=11}
-    </div>
-
-    <table>
-      <thead>
-        <tr><th>Property</th><th>Value</th><th>Notes</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>c<sub>p</sub> (R-600a vapor)</td><td>1.692 kJ/(kg·K)</td><td>Used for Δh ≈ c<sub>p</sub>ΔT</td></tr>
-        <tr><td>k (R-600a vapor)</td><td>1.105</td><td>Used for T₂s relation</td></tr>
-        <tr><td>η<sub>is</sub></td><td>0.70</td><td>Typical small hermetic compressor</td></tr>
-        <tr><td>Molecular weight</td><td>58.12 g/mol</td><td>Isobutane (C₄H₁₀)</td></tr>
-      </tbody>
-    </table>
-    <p class="foot muted">Property values as stated in the report. :contentReference[oaicite:12]{index=12}</p>
-
-    <!-- ========== CASE 1 ========== -->
-    <details>
-      <summary>CASE 1 — Clean / Better Airflow (T<sub>c</sub> = 45°C): full calculation steps</summary>
-
-      <div class="eq">
-State 1 (T_e = −26°C = 247.15 K): P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, s₁ = 2.3057 kJ/(kg·K)<br/>
-State 3 (T_c = 45°C = 318.15 K): P₃ = 6.044 bar, h₃ = 309.07 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 2: Pressure ratio: r_p = P_high / P_low = 6.044 / 0.559 = 10.81
-      </div>
-
-      <div class="eq">
-Step 3: Isentropic outlet temperature:<br/>
-T₂s = T₁ (P_high/P_low)^{(k−1)/k} = 247.15 × (10.81)^{0.09502} = 309.32 K
-      </div>
-
-      <div class="eq">
-Step 4: Isentropic enthalpy change:<br/>
-Δh_is = c_p (T₂s − T₁) = 1.692(309.32 − 247.15) = 105.15 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 5: Actual compressor work (η_is = 0.70):<br/>
-w_in = Δh_is/η_is = 105.15/0.70 = 150.21 kJ/kg<br/>
-h₂ = h₁ + w_in = 519.67 + 150.21 = 669.88 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 6: Throttle (isenthalpic): h₄ = h₃ = 309.07 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 7: Refrigerating effect: q_L = h₁ − h₄ = 519.67 − 309.07 = 210.60 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 8: COP: COP_R = q_L / w_in = 210.60 / 150.21 = 1.402 ≈ 1.40
-      </div>
-
-      <div class="eq">
-Step 9–12 (power, ṁ, Q̇H, Ṡ_gen): uses annual energy conversion and two-reservoir entropy balance (see report).<br/>
-Key computed example shown in report: ṁ ≈ 0.620 g/s, Q̇H ≈ 223.9 W, Ṡ_gen ≈ 0.2365 W/K
-      </div>
-
-      <p class="foot muted">Case 1 steps and numbers are copied from the report. :contentReference[oaicite:13]{index=13}</p>
-    </details>
-
-    <!-- ========== CASE 2 ========== -->
-    <details open>
-      <summary>CASE 2 — Baseline Tight Cabinetry (T<sub>c</sub> = 50°C): full detailed steps</summary>
-
-      <div class="eq">
-State 1 (T_e = −26°C = 247.15 K): P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, s₁ = 2.3057 kJ/(kg·K), T₁ = 247.15 K<br/>
-State 3 (T_c = 50°C = 323.15 K): P₃ = 6.887 bar (interp.), h₃ = 322.16 kJ/kg (interp.)
-      </div>
-
-      <div class="eq">
-Step 2: Pressure ratio: r_p = 6.887 / 0.559 = 12.32
-      </div>
-
-      <div class="eq">
-Step 3: Exponent: (k−1)/k = (1.105−1)/1.105 = 0.09502<br/>
-T₂s = 247.15 × (12.32)^{0.09502} = 313.76 K (≈ 40.61°C)
-      </div>
-
-      <div class="eq">
-Step 4: Δh_is = c_p (T₂s − T₁) = 1.692(313.76 − 247.15) = 112.70 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 5: Actual compressor work: w_in = Δh_is/η_is = 112.70/0.70 = 161.00 kJ/kg<br/>
-h₂ = h₁ + w_in = 519.67 + 161.00 = 680.67 kJ/kg<br/>
-Approx. T₂ = T₁ + (Δh_actual/c_p) = 247.15 + 161.00/1.692 = 342.31 K (≈ 69.16°C)
-      </div>
-
-      <div class="eq">
-Step 6: Throttle (adiabatic, no work): h₄ = h₃ = 322.16 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 7: Refrigerating effect: q_L = h₁ − h₄ = 519.67 − 322.16 = 197.51 kJ/kg
-      </div>
-
-      <div class="eq">
-Step 8: COP: COP_R = q_L / w_in = 197.51 / 161.00 = 1.227 ≈ 1.23
-      </div>
-
-      <div class="eq">
-Step 9: Annual energy → average power:<br/>
-817 kWh/yr = 817,000 Wh/yr; 8766 hr/yr → Ẇ_avg = 817,000/8766 = 93.19 W
-      </div>
-
-      <div class="eq">
-Step 10: Average cooling rate: Q̇_L = COP × Ẇ = 1.227 × 93.19 = 114.37 W
-      </div>
-
-      <div class="eq">
-Step 11: Mass flow rate: ṁ = Q̇_L / q_L = 114.37 / 197,510 = 0.000579 kg/s = 0.579 g/s
-      </div>
-
-      <div class="eq">
-Step 12: Heat rejection: Q̇_H = Q̇_L + Ẇ = 114.37 + 93.19 = 207.56 W<br/>
-Check: Q̇_H = ṁ(h₂ − h₃) = 0.000579(680.67−322.16)kJ/kg = 207.58 W ✓
-      </div>
-
-      <div class="eq">
-Step 13: Reservoir temperatures:<br/>
-T_L = 0°F = 255.37 K;  T_H = 79°F = 299.26 K<br/>
-Ṡ_gen = Q̇_H/T_H − Q̇_L/T_L = 207.56/299.26 − 114.37/255.37 = 0.2460 W/K ≥ 0 ✓
-      </div>
-
-      <div class="eq">
-Step 14: Carnot COP and second-law efficiency:<br/>
-COP_Carnot = T_L/(T_H − T_L) = 255.37/(299.26−255.37) = 5.82<br/>
-η_II = COP_actual/COP_Carnot = 1.227/5.82 = 0.211 ≈ 21.1%
-      </div>
-
-      <p class="foot muted">Case 2 steps and numbers are copied from the report. :contentReference[oaicite:14]{index=14}</p>
-    </details>
-
-    <!-- ========== CASE 3 ========== -->
-    <details>
-      <summary>CASE 3 — Restricted Airflow (T<sub>c</sub> = 55°C): full detailed steps</summary>
-
-      <div class="eq">
-State 1 (unchanged): P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, T₁ = 247.15 K<br/>
-State 3: P₃ = 7.730 bar, h₃ = 335.25 kJ/kg at T_c = 55°C = 328.15 K
-      </div>
-
-      <div class="eq">
-Pressure ratio: r_p = 7.730/0.559 = 13.83
-      </div>
-
-      <div class="eq">
-T₂s = 247.15 × (13.83)^{0.09502} = 317.24 K
-      </div>
-
-      <div class="eq">
-Δh_is = 1.692(317.24 − 247.15) = 118.56 kJ/kg<br/>
-w_in = 118.56/0.70 = 169.37 kJ/kg<br/>
-h₂ = 519.67 + 169.37 = 689.04 kJ/kg<br/>
-T₂ ≈ 247.15 + 169.37/1.692 = 347.25 K (≈ 74.10°C)
-      </div>
-
-      <div class="eq">
-Throttle: h₄ = h₃ = 335.25 kJ/kg<br/>
-q_L = h₁ − h₄ = 519.67 − 335.25 = 184.42 kJ/kg<br/>
-COP = 184.42/169.37 = 1.089 ≈ 1.09
-      </div>
-
-      <div class="eq">
-If same cooling load (114.4 W): Ẇ_needed = 114.4/1.089 = 105.05 W → Annual ≈ 921 kWh/yr<br/>
-If same power (93.2 W): Q̇_L = 1.089 × 93.2 = 101.5 W; ṁ ≈ 0.550 g/s; Q̇_H ≈ 194.7 W<br/>
-Ṡ_gen = 194.7/299.26 − 101.5/255.37 = 0.2532 W/K ≥ 0 ✓
-      </div>
-
-      <p class="foot muted">Case 3 steps and numbers are copied from the report. :contentReference[oaicite:15]{index=15}</p>
-    </details>
-
-<h3>Summary table (all cases)</h3>
-
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th>Case</th><th>Tc (°C)</th><th>P_high (bar)</th><th>P ratio</th>
-        <th>w_in (kJ/kg)</th><th>q_L (kJ/kg)</th><th>COP_R</th>
-        <th>Q̇_L (W)</th><th>Q̇_H (W)</th><th>ṁ (g/s)</th><th>Ṡ_gen (W/K)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Clean / better airflow</td><td>45</td><td>6.044</td><td>10.81</td>
-        <td>150.21</td><td>210.60</td><td>1.40</td>
-        <td>130.7</td><td>223.9</td><td>0.620</td><td>0.2365</td>
-      </tr>
-      <tr>
-        <td><strong>Baseline (tight cabinetry)</strong></td><td><strong>50</strong></td><td><strong>6.887</strong></td><td><strong>12.32</strong></td>
-        <td><strong>161.00</strong></td><td><strong>197.51</strong></td><td><strong>1.23</strong></td>
-        <td><strong>114.4</strong></td><td><strong>207.6</strong></td><td><strong>0.579</strong></td><td><strong>0.2460</strong></td>
-      </tr>
-      <tr>
-        <td>Restricted airflow (dust/blocked)</td><td>55</td><td>7.730</td><td>13.83</td>
-        <td>169.37</td><td>184.42</td><td>1.09</td>
-        <td>101.5</td><td>194.7</td><td>0.550</td><td>0.2532</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="eqblock">
+  <div class="eqline"><b>Mass balance (overall sealed loop):</b> (1) &nbsp; Σṁ<sub>in</sub> − Σṁ<sub>out</sub> = 0</div>
+</div>
+<div class="eqblock">
+  <div class="eqline"><b>Energy balance (steady-cycle First Law):</b> (2) &nbsp; Q̇<sub>H</sub> = Q̇<sub>L</sub> + Ẇ<sub>in</sub></div>
+</div>
+<div class="eqblock">
+  <div class="eqline"><b>Entropy balance (Second Law, two-reservoir form):</b> (3) &nbsp; Ṡ<sub>gen</sub> = Q̇<sub>H</sub>/T<sub>H</sub> − Q̇<sub>L</sub>/T<sub>L</sub> ≥ 0</div>
+</div>
+<div class="eqblock">
+  <div class="eqline"><b>Performance metric:</b> (4) &nbsp; COP<sub>R</sub> = Q̇<sub>L</sub> / Ẇ<sub>in</sub></div>
 </div>
 
-    <p class="foot muted">Table values match the report. :contentReference[oaicite:16]{index=16}</p>
+<hr class="pdf-hr"/>
 
-  </div>
+<h2>5. State-Point Cycle Model with Real Numbers</h2>
+<p>
+A full manufacturer thermodynamic test map is not publicly provided for this exact unit, so I build a realistic, citable state-point model using:
+</p>
+<ul>
+  <li>(i) The unit's published annual electricity use</li>
+  <li>(ii) The recommended compartment setpoints</li>
+  <li>(iii) The common low-GWP domestic refrigerant <b>R-600a</b> (isobutane) used by many ENERGY STAR listed refrigerators</li>
+  <li>(iv) Published R-600a thermodynamic property tables</li>
+</ul>
 
-  <!-- ========================================================= -->
-  <div id="designchange" class="section">
-    <h2>7. Design/Operating Change Analysis: Condenser Heat Rejection in Tight Cabinetry</h2>
-
-    <p class="muted">
-      Tight cabinetry can increase condenser temperature due to reduced airflow. That increases condenser saturation pressure, increases compressor pressure ratio,
-      increases compressor specific work, and reduces COP. The results above quantify this trend. :contentReference[oaicite:17]{index=17}
-    </p>
-
-    <h3>Annual energy impact estimate (same cooling load)</h3>
-    <table>
-      <thead>
-        <tr><th>Scenario</th><th>Assumed condenser condition</th><th>COP_R</th><th>Avg Ẇ needed (W)</th><th>Annual energy (kWh/yr)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Cleaner / better airflow</td><td>Tc ≈ 45°C</td><td>1.39</td><td>82.4</td><td>722</td></tr>
-        <tr><td>Baseline (your installation)</td><td>Tc ≈ 50°C</td><td>1.23</td><td>93.3</td><td>817</td></tr>
-        <tr><td>Restricted airflow</td><td>Tc ≈ 55°C</td><td>1.09</td><td>105.1</td><td>920</td></tr>
-      </tbody>
-    </table>
-
-    <p class="muted">
-      Interpretation: moving from “cleaner/better airflow” (45°C) to “restricted airflow” (55°C) increases annual energy from about 722 to 920 kWh/yr for the same
-      average cooling requirement, since Ẇ = Q̇_L / COP_R. :contentReference[oaicite:18]{index=18}
-    </p>
-  </div>
-
-  <!-- ========================================================= -->
-  <div id="ua" class="section">
-    <h2>8. Extra: Heat-Leak Model (UA) and Ambient Temperature Sensitivity</h2>
-
-    <p class="muted">
-      To connect the cycle results to a building-physics style model, the report estimates an equivalent overall heat leak coefficient
-      UA by lumping heat gains into a linear relation: Q̇_L ≈ UA (T_ambient − T_cold,eq). :contentReference[oaicite:19]{index=19}
-    </p>
-
-    <div class="eq">
-Baseline ΔT: T_ambient = 79°F = 299.26 K; T_freezer = 0°F = 255.37 K → ΔT = 43.89 K<br/>
-UA = Q̇_L / ΔT = 114.4 W / 43.89 K = 2.606 W/K ≈ 2.61 W/K
-    </div>
-
-    <details>
-      <summary>What does UA physically represent here?</summary>
-      <ul class="muted">
-        <li>Combined conductance of insulation, gasket leakage, thermal bridges, internal fans/lights, and usage patterns. :contentReference[oaicite:20]{index=20}</li>
-        <li>Insulation-only back-of-envelope: area ≈ 8.8 m²; polyurethane k ≈ 0.024 W/(m·K); thickness 0.075 m → UA ≈ 2.81 W/K (close to 2.61 W/K). :contentReference[oaicite:21]{index=21}</li>
-      </ul>
-    </details>
-
-    <h3>Ambient temperature sensitivity (70°F vs 79°F)</h3>
-    <div class="eq">
-At 70°F: ΔT = 38.89 K → Q̇_L ≈ 2.61×38.89 = 101.5 W<br/>
-COP_Carnot,70F = 6.57; COP_actual,70F ≈ 1.39 → Ẇ ≈ 73.0 W → Annual ≈ 640 kWh/yr<br/><br/>
-At 79°F (baseline): Q̇_L ≈ 114.4 W; COP_Carnot = 5.82; COP_actual = 1.23 → Ẇ ≈ 93.2 W → Annual ≈ 817 kWh/yr
-    </div>
-
-    <p class="muted">
-      Impact summary in the report: power increases by ≈ 27.7% (73.0 → 93.2 W), annual energy increases by ≈ 177 kWh/yr (640 → 817),
-      costing about $26.55/yr at $0.15/kWh. :contentReference[oaicite:22]{index=22}
-    </p>
-
-    <h3>Combined condenser + ambient effect (quantified)</h3>
-    <ul class="muted">
-      <li>From Tc = 45°C to 55°C: pressure ratio +28.0%, compressor work +12.8%, refrigerating effect −12.4%, COP −22.1%. :contentReference[oaicite:23]{index=23}</li>
-      <li>For same cooling load: power +28.5% and annual energy 722 → 921 kWh (+27.6%). :contentReference[oaicite:24]{index=24}</li>
-      <li>Moving from ideal (70°F + clean condenser) to challenging (79°F + restricted condenser) can raise annual energy by ~280 kWh/yr (640 → 920), about a 44% operating-cost increase (per report conclusion). :contentReference[oaicite:25]{index=25}</li>
+<h3>Chosen Representative Temperatures</h3>
+<ul>
+  <li><b>Evaporating saturation temperature:</b> T<sub>e</sub> = <b>−26°C</b></li>
+  <li><b>Condensing saturation temperature:</b>
+    <ul>
+      <li>Clean / better airflow: T<sub>c</sub> = <b>45°C</b></li>
+      <li>Baseline tight cabinetry: T<sub>c</sub> = <b>50°C</b></li>
+      <li>Restricted airflow: T<sub>c</sub> = <b>55°C</b></li>
     </ul>
-  </div>
+  </li>
+</ul>
 
-  <!-- ========================================================= -->
-  <div id="measurements" class="section">
-    <h2>9. Optional Measurements to Personalize Further</h2>
+<h3>R-600a Thermodynamic Properties</h3>
+<table>
+  <thead>
+    <tr><th>Property</th><th>Value</th><th>Source/Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Specific heat, c<sub>p</sub></td><td><b>1.692 kJ/(kg·K)</b></td><td>R-600a vapor property datasheet</td></tr>
+    <tr><td>Specific heat ratio, k</td><td><b>1.105</b></td><td>R-600a vapor property datasheet</td></tr>
+    <tr><td>Isentropic efficiency, η<sub>is</sub></td><td><b>0.70 (70%)</b></td><td>Typical for small hermetic compressors</td></tr>
+    <tr><td>Molecular weight</td><td><b>58.12 g/mol</b></td><td>Isobutane (C₄H₁₀)</td></tr>
+  </tbody>
+</table>
 
-    <p class="muted">
-      To make the analysis even more device-specific, the report recommends: (i) photo of rating plate (refrigerant charge in grams),
-      (ii) measured condenser-air temperature behind the grille, (iii) short power log (plug-in meter for compressor cycling),
-      and (iv) door-opening frequency. :contentReference[oaicite:26]{index=26}
-    </p>
-  </div>
+<h3>State Properties from R-600a Tables</h3>
+<table>
+  <thead>
+    <tr><th>Quantity</th><th>Value</th><th>Meaning</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>P<sub>low</sub> @ −26°C</td><td><b>0.559 bar</b></td><td>Evaporator saturation pressure (State 1)</td></tr>
+    <tr><td>h₁ @ −26°C sat vapor</td><td><b>519.67 kJ/kg</b></td><td>Compressor inlet enthalpy (State 1)</td></tr>
+    <tr><td>s₁ @ −26°C sat vapor</td><td><b>2.3057 kJ/(kg·K)</b></td><td>Compressor inlet entropy (State 1)</td></tr>
+    <tr><td>h₃ @ 45°C sat liquid</td><td><b>309.07 kJ/kg</b></td><td>Condenser outlet enthalpy (clean case)</td></tr>
+    <tr><td>h₃ @ 50°C sat liquid</td><td><b>322.16 kJ/kg</b></td><td>Condenser outlet enthalpy (baseline)</td></tr>
+    <tr><td>h₃ @ 55°C sat liquid</td><td><b>335.25 kJ/kg</b></td><td>Condenser outlet enthalpy (restricted case)</td></tr>
+  </tbody>
+</table>
 
-  <!-- ========================================================= -->
-  <div id="sources" class="section">
-    <h2>10. Sources (as listed in the report)</h2>
+<h3>Component Energy Relations</h3>
+<div class="eqblock">
+  <div class="eqline">(5) Compressor: Ẇ<sub>in</sub> ≈ ṁ (h₂ − h₁)</div>
+  <div class="eqline">(6) Condenser: Q̇<sub>H</sub> ≈ ṁ (h₂ − h₃)</div>
+  <div class="eqline">(7) Throttle: h₄ ≈ h₃ (isenthalpic throttling)</div>
+  <div class="eqline">(8) Evaporator: Q̇<sub>L</sub> ≈ ṁ (h₁ − h₄)</div>
+</div>
 
-    <p class="muted">
-      Sub-Zero manufacturer sources (model specs, capacity, annual kWh, electrical supply), Sub-Zero Classic Series Use &amp; Care Guide (recommended setpoints),
-      EnergyGuide label (817 kWh/yr), ENERGY STAR listing context, and published R-600a saturation tables / R-600a datasheet for c_p and k. :contentReference[oaicite:27]{index=27}
-    </p>
+<hr class="pdf-hr"/>
 
-    <div class="tag">Moran &amp; Shapiro Ch. 1–10</div>
-    <div class="tag">EnergyGuide 817 kWh/yr</div>
-    <div class="tag">R-600a property tables</div>
-    <div class="tag">First Law + Second Law</div>
-  </div>
+<h2>6. Step-by-Step Cycle Results (All Numbers)</h2>
+<p>
+Compressor modeling uses an ideal-gas approximation for vapor compression with constant c<sub>p</sub> and k and an isentropic efficiency η<sub>is</sub> = 0.70.
+For each condenser temperature case, I compute pressure ratio, isentropic outlet temperature, compressor specific work, refrigerating effect, COP, and then use the measured annual energy to estimate average Q̇<sub>L</sub> and mass flow rate.
+</p>
 
+<h3>CASE 1: Clean / Better Airflow (T<sub>c</sub> = 45°C)</h3>
+
+<div class="eqblock">
+  <div class="eqline"><b>Step 1:</b> State 1 at T<sub>e</sub> = −26°C (247.15 K): P₁ = 0.559 bar, h₁ = 519.67 kJ/kg, s₁ = 2.3057 kJ/(kg·K)</div>
+  <div class="eqline"><b>Step 1:</b> State 3 at T<sub>c</sub> = 45°C (318.15 K): P₃ = 6.044 bar, h₃ = 309.07 kJ/kg</div>
+  <div class="eqline"><b>Step 2:</b> r<sub>p</sub> = 6.044/0.559 = 10.81</div>
+  <div class="eqline"><b>Step 3:</b> T₂s = 247.15 × (10.81)<sup>0.09502</sup> = 309.32 K</div>
+  <div class="eqline"><b>Step 4:</b> Δh<sub>is</sub> = 1.692(309.32 − 247.15) = 105.15 kJ/kg</div>
+  <div class="eqline"><b>Step 5:</b> w<sub>in</sub> = 105.15/0.70 = 150.21 kJ/kg; h₂ = 519.67 + 150.21 = 669.88 kJ/kg</div>
+  <div class="eqline"><b>Step 6:</b> h₄ = h₃ = 309.07 kJ/kg</div>
+  <div class="eqline"><b>Step 7:</b> q<sub>L</sub> = 519.67 − 309.07 = 210.60 kJ/kg</div>
+  <div class="eqline"><b>Step 8:</b> COP<sub>R</sub> = 210.60/150.21 = 1.40</div>
+  <div class="eqline"><b>Key results used in summary:</b> Q̇<sub>L</sub> = 130.7 W, Q̇<sub>H</sub> = 223.9 W, ṁ = 0.620 g/s, Ṡ<sub>gen</sub> = 0.2365 W/K</div>
+</div>
+
+<h3>CASE 2: Baseline Tight Cabinetry (T<sub>c</sub> = 50°C) — DETAILED</h3>
+
+<div class="eqblock">
+  <div class="eqline"><b>Step 2:</b> r<sub>p</sub> = 6.887/0.559 = 12.32</div>
+  <div class="eqline"><b>Step 3:</b> (k−1)/k = 0.09502; T₂s = 247.15 × (12.32)<sup>0.09502</sup> = 313.76 K</div>
+  <div class="eqline"><b>Step 4:</b> Δh<sub>is</sub> = 1.692(313.76 − 247.15) = 112.70 kJ/kg</div>
+  <div class="eqline"><b>Step 5:</b> w<sub>in</sub> = 112.70/0.70 = 161.00 kJ/kg; h₂ = 519.67 + 161.00 = 680.67 kJ/kg</div>
+  <div class="eqline"><b>Step 6:</b> h₄ = h₃ = 322.16 kJ/kg</div>
+  <div class="eqline"><b>Step 7:</b> q<sub>L</sub> = 519.67 − 322.16 = 197.51 kJ/kg</div>
+  <div class="eqline"><b>Step 8:</b> COP<sub>R</sub> = 197.51/161.00 = 1.227 ≈ 1.23</div>
+  <div class="eqline"><b>Step 9:</b> Ẇ = 817,000 Wh / 8766 hr = 93.19 W</div>
+  <div class="eqline"><b>Step 10:</b> Q̇<sub>L</sub> = 1.227 × 93.19 = 114.37 W</div>
+  <div class="eqline"><b>Step 11:</b> ṁ = 114.37 / 197,510 = 0.000579 kg/s = 0.579 g/s</div>
+  <div class="eqline"><b>Step 12:</b> Q̇<sub>H</sub> = 114.37 + 93.19 = 207.56 W ≈ 207.6 W</div>
+  <div class="eqline"><b>Step 13:</b> Ṡ<sub>gen</sub> = 207.56/299.26 − 114.37/255.37 = 0.2460 W/K ≥ 0 ✓</div>
+  <div class="eqline"><b>Step 14:</b> COP<sub>Carnot</sub> = 255.37/(299.26−255.37) = 5.82; η<sub>II</sub> = 1.227/5.82 = 0.211 = 21.1%</div>
+</div>
+
+<h3>CASE 3: Restricted Airflow (T<sub>c</sub> = 55°C)</h3>
+
+<div class="eqblock">
+  <div class="eqline"><b>Step 2:</b> r<sub>p</sub> = 7.730/0.559 = 13.83</div>
+  <div class="eqline"><b>Step 3:</b> T₂s = 247.15 × (13.83)<sup>0.09502</sup> = 317.24 K</div>
+  <div class="eqline"><b>Step 4–5:</b> Δh<sub>is</sub> = 118.56; w<sub>in</sub> = 169.37 kJ/kg</div>
+  <div class="eqline"><b>Step 6–8:</b> h₄ = 335.25; q<sub>L</sub> = 184.42 kJ/kg; COP = 1.09</div>
+  <div class="eqline"><b>Same power (93.2 W):</b> Q̇<sub>L</sub> = 101.5 W; ṁ = 0.550 g/s; Q̇<sub>H</sub> = 194.7 W</div>
+  <div class="eqline"><b>Entropy:</b> Ṡ<sub>gen</sub> = 194.7/299.26 − 101.5/255.37 = 0.2532 W/K ≥ 0 ✓</div>
+</div>
+
+<h3>Summary Table of All Results</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>T<sub>c</sub> (°C)</th>
+      <th>P<sub>high</sub> (bar)</th>
+      <th>P ratio</th>
+      <th>w<sub>in</sub> (kJ/kg)</th>
+      <th>q<sub>L</sub> (kJ/kg)</th>
+      <th>COP<sub>R</sub></th>
+      <th>Q̇<sub>L</sub> (W)</th>
+      <th>Q̇<sub>H</sub> (W)</th>
+      <th>ṁ (g/s)</th>
+      <th>Ṡ<sub>gen</sub> (W/K)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Clean / better airflow</td>
+      <td>45</td><td>6.044</td><td>10.81</td><td>150.21</td><td>210.60</td><td>1.40</td><td>130.7</td><td>223.9</td><td>0.620</td><td>0.2365</td>
+    </tr>
+    <tr>
+      <td>Baseline (tight cabinetry)</td>
+      <td>50</td><td>6.887</td><td>12.32</td><td>161.00</td><td>197.51</td><td>1.23</td><td>114.4</td><td>207.6</td><td>0.579</td><td>0.2460</td>
+    </tr>
+    <tr>
+      <td>Restricted airflow (dust/blocked)</td>
+      <td>55</td><td>7.730</td><td>13.83</td><td>169.37</td><td>184.42</td><td>1.09</td><td>101.5</td><td>194.7</td><td>0.550</td><td>0.2532</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="pdf-hr"/>
+
+<h2>7. Design/Operating Change Analysis: Condenser Heat Rejection in Tight Cabinetry</h2>
+<p>
+Because the unit is built into tight cabinetry, the condenser may run hotter due to reduced airflow. This increases condenser saturation pressure, increases compressor pressure ratio, increases compressor specific work w<sub>in</sub>, and reduces COP. The table in Section 6 quantifies this trend.
+</p>
+
+<h3>Annual energy impact estimate (keeping the same cooling load)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Scenario</th>
+      <th>Assumed condenser condition</th>
+      <th>COP<sub>R</sub></th>
+      <th>Avg Ẇ needed for same Q̇<sub>L</sub> (W)</th>
+      <th>Annual energy (kWh/yr)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Cleaner / better airflow</td><td>T<sub>c</sub> ≈ 45°C</td><td>1.39</td><td>82.4</td><td>722</td></tr>
+    <tr><td>Baseline (your installation)</td><td>T<sub>c</sub> ≈ 50°C</td><td>1.23</td><td>93.3</td><td>817</td></tr>
+    <tr><td>Restricted airflow</td><td>T<sub>c</sub> ≈ 55°C</td><td>1.09</td><td>105.1</td><td>920</td></tr>
+  </tbody>
+</table>
+
+<p class="caption">
+Interpretation: moving from a “cleaner/better airflow” condenser condition (45°C) to a “restricted airflow” condition (55°C) can increase annual energy from about 722 to 920 kWh/yr for the same average cooling requirement. This follows from Ẇ<sub>in</sub> = Q̇<sub>L</sub>/COP<sub>R</sub>.
+</p>
+
+<hr class="pdf-hr"/>
+
+<h2>8. Extra: Heat Leak Model (UA) and Ambient Temperature Sensitivity</h2>
+<p>
+To connect the cycle results to a building-physics style model, I estimate an equivalent overall heat leak coefficient UA by lumping all heat gains (through insulation, gasket leakage, door openings, internal lights/fans, and warm food loads) into a single linear relation:
+</p>
+<div class="eqblock">
+  <div class="eqline">Q̇<sub>L</sub> ≈ UA · (T<sub>ambient</sub> − T<sub>cold,eq</sub>)</div>
+</div>
+
+<h3>Detailed UA Calculation</h3>
+<div class="eqblock">
+  <div class="eqline">T<sub>ambient</sub> = 79°F = 26.11°C = 299.26 K</div>
+  <div class="eqline">T<sub>freezer</sub> = 0°F = −17.78°C = 255.37 K</div>
+  <div class="eqline">ΔT = 299.26 − 255.37 = 43.89 K</div>
+  <div class="eqline">UA = Q̇<sub>L</sub>/ΔT = 114.4 W / 43.89 K = 2.606 W/K ≈ 2.61 W/K</div>
+</div>
+
+<h3>Ambient Temperature Sensitivity (70°F vs 79°F)</h3>
+<div class="eqblock">
+  <div class="eqline"><b>At 70°F (294.26 K):</b> ΔT = 38.89 K → Q̇<sub>L</sub> ≈ 2.61×38.89 = 101.5 W</div>
+  <div class="eqline">COP<sub>Carnot,70F</sub> = 6.57; COP<sub>actual,70F</sub> ≈ 1.39 → Ẇ ≈ 73.0 W → Annual ≈ 640 kWh/yr</div>
+  <div class="eqline"><b>At 79°F (299.26 K):</b> Annual ≈ 817 kWh/yr</div>
+</div>
+
+<hr class="pdf-hr"/>
+
+<h2>9. Optional Measurements to Personalize Further (If Available)</h2>
+<p>
+To make this analysis even more device-specific, the most valuable additional data would be: (i) a photo of the rating plate listing refrigerant charge (grams), (ii) measured condenser-air temperature behind the grille, (iii) a short power log from a plug-in power meter (compressor cycling), and (iv) observed door-opening frequency.
+</p>
+
+<hr class="pdf-hr"/>
+
+<h2>10. Sources</h2>
+<p>
+Sub-Zero manufacturer sources (model specs, capacity, annual kWh, electrical supply): Sub-Zero product page and trade resources pages for CL4850SID/S. Sub-Zero Classic Series Use &amp; Care Guide (recommended setpoints: 38°F refrigerator, 0°F freezer). EnergyGuide label for CL4850SID/* family (817 kWh/yr). ENERGY STAR refrigerator listing for Sub-Zero CL4850S/S family (context on low-GWP refrigerants). Thermophysical properties used for cycle calculations: published R-600a saturation tables; R-600a c<sub>p</sub> and k from a refrigerant property datasheet.
+</p>
+
+<p class="caption">— End of Report —</p>
+
+</article>
 </div>
