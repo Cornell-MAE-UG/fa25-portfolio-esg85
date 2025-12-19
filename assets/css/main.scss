@@ -65,3 +65,21 @@ img { max-width: 100%; height: auto; }
   background: rgba(13,110,253,0.12); /* bootstrap primary tint */
   font-weight: 600;
 }
+/* ===== Single-color navbar ===== */
+.single-nav{
+  background-color: #0b1f33;   /* navy */
+}
+
+.single-nav .navbar-brand,
+.single-nav .nav-link{
+  color: #e5e7eb !important;
+}
+
+.single-nav .nav-link:hover{
+  color: #ffffff !important;
+}
+
+.single-nav .nav-link.active{
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}

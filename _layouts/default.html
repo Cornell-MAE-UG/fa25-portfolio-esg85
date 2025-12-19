@@ -19,35 +19,37 @@
 
   <!-- ===== NAVBAR ===== -->
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top shadow-sm">
-      <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark single-nav sticky-top">
+      <div class="container-fluid px-4">
+
+        <!-- Left: Name -->
         <a class="navbar-brand fw-semibold" href="{{ "/" | relative_url }}">
-          {{ site.title }}
+          Eva Gottesfeld
         </a>
 
+        <!-- Mobile toggle -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+        <!-- Right: Pages -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav gap-lg-3">
             <li class="nav-item">
-              <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ "/" | relative_url }}">
-                Home
-              </a>
+              <a class="nav-link {% if page.url == '/' %}active{% endif %}"
+                href="{{ "/" | relative_url }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if page.url == '/projects/' %}active{% endif %}" href="{{ "/projects/" | relative_url }}">
-                Projects
-              </a>
+              <a class="nav-link {% if page.url == '/projects/' %}active{% endif %}"
+                href="{{ "/projects/" | relative_url }}">Projects</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {% if page.url == '/cv/' %}active{% endif %}" href="{{ "/cv/" | relative_url }}">
-                CV
-              </a>
+              <a class="nav-link {% if page.url == '/cv/' %}active{% endif %}"
+                href="{{ "/cv/" | relative_url }}">CV</a>
             </li>
           </ul>
         </div>
+
       </div>
     </nav>
   </header>

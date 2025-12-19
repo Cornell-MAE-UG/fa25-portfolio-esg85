@@ -16,20 +16,26 @@ image: /assets/images/sub-zero-closed.png
 /* Slightly wider paper and bigger padding */
 .pdf-page{
   background: #f8fafc;
-  max-width: 1200px;        /* MUCH wider */
-  width: 92vw;              /* responsive */
+  max-width: 1400px;     /* wider than before */
+  width: 94vw;           /* fill most of the screen */
   margin: 0 auto;
-  padding: 64px 72px;
+  padding: 64px 80px;
 
-  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
   border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
   border: 2px solid #94a3b8;
 
   font-size: 19px;
   line-height: 1.6;
   color: #0b1220;
 }
-
+@media (max-width: 900px){
+  .pdf-page{
+    width: 96vw;
+    padding: 32px 20px;
+    font-size: 17.5px;
+  }
+}
 
 /* Title: bigger + navy */
 .pdf-page h1{
