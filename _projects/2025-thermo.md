@@ -1,6 +1,5 @@
 ---
 layout: project
-title: Thermodynamics Portfolio - Sub-Zero Refrigerator Analysis
 description: Vapor-Compression Refrigeration Cycle Analysis
 technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
 image: /assets/images/sub-zero-closed.png
@@ -216,7 +215,7 @@ The Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It
 
 <hr class="pdf-hr"/>
 
-<h2>4. System Diagram &amp; Governing Balances (Moran Ch. 4–5)</h2>
+<h2>4. System Diagram &amp; Governing Balances</h2>
 <p>
 I model the sealed refrigeration loop as a steady-state control volume. The working fluid mass circulates internally, so net mass flow across the outer boundary is approximately zero. Heat and work cross the boundary.
 </p>
