@@ -186,14 +186,26 @@ Source notes: Annual energy use and electrical info are from Sub-Zero product/sp
 </p>
 
 
-<div class="figure">
-  <img src="{{ '/assets/images/sub-zero-closed.png' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
-  <div class="figcap">Figure. Sub-Zero Closed CL4850SID/S refrigerator.</div>
+<div class="row text-center">
+  <div class="col-md-6">
+    <div class="figure">
+      <img src="{{ '/assets/images/sub-zero-closed.png' | relative_url }}"
+           alt="Sub-Zero CL4850SID/S refrigerator closed"
+           class="img-fluid">
+      <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator (closed).</div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="figure">
+      <img src="{{ '/assets/images/sub-zero-opened.png' | relative_url }}"
+           alt="Sub-Zero CL4850SID/S refrigerator opened"
+           class="img-fluid">
+      <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator (opened).</div>
+    </div>
+  </div>
 </div>
-<div class="figure">
-  <img src="{{ '/assets/images/sub-zero-opened.png' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
-  <div class="figcap">Figure. Sub-Zero Opened CL4850SID/S refrigerator.</div>
-</div>
+
 
 <hr class="pdf-hr"/>
 
