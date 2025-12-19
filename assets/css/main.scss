@@ -57,3 +57,11 @@ img { max-width: 100%; height: auto; }
     max-width: 520px;
   }
 }
+.navbar .nav-link{
+  border-radius: 999px;
+  padding: .45rem .8rem;
+}
+.navbar .nav-link.active{
+  background: rgba(13,110,253,0.12); /* bootstrap primary tint */
+  font-weight: 600;
+}

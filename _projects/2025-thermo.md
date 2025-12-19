@@ -234,6 +234,16 @@ main.container{
   margin-left: auto !important;
   margin-right: auto !important;
 }
+/* Center all tables within the report panel */
+.pdf-page table{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Optional: keep most tables from stretching too wide */
+.pdf-page table:not(.full-width){
+  width: min(100%, 900px);
+}
 
 </style>
 
