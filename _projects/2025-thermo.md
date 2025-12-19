@@ -1,6 +1,6 @@
 ---
 layout: project
-title: Thermodynamics Portfolio: Above-and-Beyond Cycle Analysis
+title: Thermodynamics Portfolio: Sub Zero Fridge Analsysis
 description: Vapor-Compression Refrigeration Cycle Analysis
 technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
 image: /assets/images/subzero-fridge.jpg
@@ -15,16 +15,21 @@ image: /assets/images/subzero-fridge.jpg
 
 /* Slightly wider paper and bigger padding */
 .pdf-page{
-  max-width: 980px;
-  padding: 54px 62px;
+  background: #f8fafc;
+  max-width: 1200px;        /* MUCH wider */
+  width: 92vw;              /* responsive */
+  margin: 0 auto;
+  padding: 64px 72px;
 
-  /* make all text bigger */
-  font-size: 18px;
-  line-height: 1.55;
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  border-radius: 16px;
+  border: 2px solid #94a3b8;
 
-  /* subtle tinted paper edge */
-  border: 1px solid #dbe4f0;
+  font-size: 19px;
+  line-height: 1.6;
+  color: #0b1220;
 }
+
 
 /* Title: bigger + navy */
 .pdf-page h1{
@@ -164,6 +169,49 @@ body{
 
 .pdf-page table th{
   background: #dbeafe;
+}
+/* ===============================
+   HIGH-CONTRAST LINES & DIVIDERS
+================================ */
+
+/* Section divider lines */
+.pdf-hr{
+  border-top: 2px solid #94a3b8; /* slate-400 */
+  opacity: 1;
+}
+
+/* Table borders: darker + clearer */
+.pdf-page table{
+  border: 2px solid #94a3b8;
+}
+
+.pdf-page th,
+.pdf-page td{
+  border: 1.5px solid #94a3b8;
+}
+
+/* Table header stronger contrast */
+.pdf-page th{
+  background: #c7d2fe; /* indigo-200 */
+  color: #020617;
+}
+
+/* Equation blocks: stronger edge */
+.eqblock{
+  border-left: 6px solid #2563eb; /* blue-600 */
+  background: #eef2ff;
+}
+
+/* Figure borders */
+.figure img{
+  border: 2px solid #94a3b8;
+}
+@media (max-width: 900px){
+  .pdf-page{
+    width: 96vw;
+    padding: 32px 20px;
+    font-size: 17.5px;
+  }
 }
 
 </style>
