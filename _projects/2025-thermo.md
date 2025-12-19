@@ -125,11 +125,12 @@ main.container{
 body{
   background: linear-gradient(
     180deg,
-    #0f172a 0%,    /* deep navy */
-    #111827 40%,   /* slate */
-    #020617 100%   /* near-black */
+    #0b1f33 0%,   /* deep navy */
+    #102a43 45%,  /* classic navy */
+    #081b2e 100%  /* darker navy */
   ) !important;
 }
+
 
 /* Centered paper card (non-white background visible) */
 .pdf-shell{
@@ -213,13 +214,33 @@ body{
     font-size: 17.5px;
   }
 }
+/* === FORCE PERFECT CENTERING === */
+
+/* Remove Bootstrap container constraints */
+main.container{
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Center the PDF page horizontally */
+.pdf-shell{
+  display: flex;
+  justify-content: center;
+}
+
+/* Ensure the paper is truly centered */
+.pdf-page{
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 </style>
 
 <div class="pdf-shell">
 <article class="pdf-page">
 
-<h1>Thermodynamics Portfolio: Above-and-Beyond Cycle Analysis</h1>
+<h1>Thermodynamics Portfolio: Sub Zero Refridgerator</h1>
 <p class="pdf-subhead">
 <b>Specific device:</b> Sub-Zero CL4850SID/S (48-inch built-in side-by-side refrigerator/freezer, internal dispenser)<br/>
 <b>Course text:</b> Moran &amp; Shapiro, <i>Fundamentals of Engineering Thermodynamics</i>, Ch. 1–10
