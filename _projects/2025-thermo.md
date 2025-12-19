@@ -7,12 +7,7 @@ image: /assets/images/sub-zero-closed.png
 ---
 
 <style>
-/* ===============================
-   FULL-WIDTH THERMO REPORT STYLE
-   (single source of truth)
-================================ */
-
-/* Make sure Bootstrap container isn't limiting you */
+/* Make sure layout doesn't constrain width */
 main.container,
 main.container-fluid{
   max-width: none !important;
@@ -21,35 +16,28 @@ main.container-fluid{
   background: transparent !important;
 }
 
-/* Page background */
+/* Background */
 body{
-  background: linear-gradient(
-    180deg,
-    #1372d0 0%,
-    #027aeb 45%,
-    #0c70d4 100%
-  ) !important;
+  background: linear-gradient(180deg, #0b1f33 0%, #102a43 45%, #081b2e 100%) !important;
 }
 
-/* Outer wrapper: gives small breathing room */
+/* Outer wrapper */
 .pdf-shell{
   width: 100%;
-  padding: 18px 16px 40px;  /* left/right margin so it doesn't touch edges */
+  padding: 18px 18px 46px;
   display: flex;
   justify-content: center;
 }
 
-/* The report panel: WIDE */
+/* THIS is what makes it “screen-sized” */
 .pdf-page{
-  width: 100% !important;         /* take full available width */
-  /* max-width: 1700px !important;   "screen sized" on large monitors */
-  margin: 0 auto !important;
-
+  width: 98vw;                 /* nearly full screen */
+  max-width: 1800px;           /* big monitors */
   background: #f8fafc;
   padding: 56px 72px;
   border-radius: 16px;
-  border: 2px solid #94a3b8;
   box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+  border: 2px solid rgba(148,163,184,0.9);
 
   font-size: 19px;
   line-height: 1.65;
@@ -57,101 +45,46 @@ body{
 }
 
 /* Headings */
-.pdf-page h1{
-  font-size: 36px;
-  color: #0b2a4a;
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-.pdf-subhead{
-  font-size: 17px;
-  color: #22354a;
-  margin-bottom: 18px;
-}
-.pdf-page h2{
-  font-size: 22px;
-  color: #123a63;
-  margin-top: 24px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid #cfe0f6;
-}
-.pdf-page h3{
-  font-size: 19px;
-  color: #1b4d85;
-  margin-top: 18px;
-}
+.pdf-page h1{ font-size: 36px; color:#0b2a4a; }
+.pdf-page h2{ font-size: 22px; color:#123a63; border-bottom:2px solid #cfe0f6; padding-bottom:8px; margin-top:26px; }
+.pdf-page h3{ font-size: 19px; color:#1b4d85; margin-top:18px; }
 
-/* Divider line */
 .pdf-hr{
   border: none;
-  border-top: 2px solid #94a3b8;
+  border-top: 2px solid rgba(148,163,184,0.9);
   margin: 18px 0;
-  opacity: 1;
 }
 
-/* Tables: FULL WIDTH of the report panel (THIS is the key change) */
+/* Tables (when markdown tables render) */
 .pdf-page table{
-  width: 100% !important;         /* fill the report panel */
-  margin: 14px 0 !important;      /* no auto-centering needed */
+  width: 100%;
   border-collapse: collapse;
+  border: 2px solid rgba(148,163,184,0.9);
+  margin: 14px 0;
   font-size: 16px;
-  border: 2px solid #94a3b8;
 }
-
-.pdf-page th,
-.pdf-page td{
-  border: 1.5px solid #94a3b8;
+.pdf-page th, .pdf-page td{
+  border: 1.5px solid rgba(148,163,184,0.9);
   padding: 8px 10px;
   vertical-align: top;
 }
-
 .pdf-page th{
-  background: #c7d2fe;
-  color: #020617;
+  background: #dbeafe;
+  color: #0b2a4a;
   font-weight: 700;
 }
 
-/* Equation blocks */
-.eqblock{
-  border-left: 6px solid #2563eb;
-  background: #eef2ff;
-  padding: 12px 14px;
-  margin: 12px 0 14px 0;
-}
-.eqline{ font-size: 16.5px; }
-
-/* Captions */
-.caption, .figcap{
-  font-size: 15px;
-  color: #3b4b60;
-}
-
-/* Emphasis */
-strong, b{ color: #0b2a4a; }
-
-/* Images */
-.figure img{
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #94a3b8;
-  border-radius: 12px;
-}
-
-/* Responsive */
-@media (max-width: 1100px){
-  .pdf-page{ padding: 40px 28px; }
-}
-@media (max-width: 1100px){
-  .pdf-shell{ padding: 14px 10px 28px; }
+/* Mobile */
+@media (max-width: 900px){
   .pdf-page{
+    width: 96vw;
     padding: 28px 16px;
     font-size: 17.5px;
   }
   .pdf-page h1{ font-size: 28px; }
-  .pdf-page h2{ font-size: 20px; }
-  .pdf-page h3{ font-size: 18px; }
 }
 </style>
+
 
 
 <div class="pdf-shell">
@@ -226,7 +159,7 @@ Source notes: Annual energy use and electrical info are from Sub-Zero product/sp
 
 <h2>3. Qualitative Description (How It Works)</h2>
 <p>
-Thermodynamically, the Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It removes heat from the refrigerator/freezer compartments (low-temperature region) and rejects that heat to the kitchen air (high-temperature region) using electrical work supplied to a compressor. The refrigerant circulates in a closed loop through four main components:
+The Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It removes heat from the refrigerator/freezer compartments (low-temperature region) and rejects that heat to the kitchen air (high-temperature region) using electrical work supplied to a compressor. The refrigerant circulates in a closed loop through four main components:
 </p>
 <ul>
   <li><b>Evaporator</b> – Absorbs heat from food compartments</li>
