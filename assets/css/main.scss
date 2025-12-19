@@ -83,3 +83,22 @@ img { max-width: 100%; height: auto; }
   text-decoration: underline;
   text-underline-offset: 6px;
 }
+
+.single-nav {
+  background-color: #0b1f33 !important; /* Cornell deep navy */
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+
+.single-nav .nav-link,
+.single-nav .navbar-brand {
+  color: #e5ecf5 !important;
+}
+
+.single-nav .nav-link.active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.single-nav .nav-link:hover {
+  color: #cfe0f6 !important;
+}

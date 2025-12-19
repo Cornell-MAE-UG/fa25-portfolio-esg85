@@ -83,12 +83,53 @@ body{
   }
   .pdf-page h1{ font-size: 28px; }
 }
+/* Kill Bootstrap width constraints */
+main.container,
+main.container-fluid {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Outer shell */
+.pdf-shell {
+  width: 100%;
+  padding: 24px 24px 56px;
+  display: flex;
+  justify-content: center;
+}
+
+/* TRUE wide page */
+.pdf-page,
+.wide-page {
+  width: min(96vw, 2200px);   /* <-- wider than before */
+  max-width: none;           /* <-- critical */
+  background: #f8fafc;
+  padding: 64px 96px;        /* wider text block */
+  border-radius: 18px;
+
+  font-size: 20px;
+  line-height: 1.7;
+  color: #0b1220;
+
+  box-shadow: 0 35px 100px rgba(0,0,0,0.45);
+  border: 2px solid rgba(148,163,184,0.85);
+}
+
+/* Mobile */
+@media (max-width: 900px){
+  .pdf-page {
+    width: 98vw;
+    padding: 28px 18px;
+    font-size: 17.5px;
+  }
+}
+
 </style>
 
 
 
-<div class="pdf-shell">
-<article class="pdf-page">
+
 
 <h1>Thermodynamics Portfolio: Sub Zero Refridgerator</h1>
 <p class="pdf-subhead">
@@ -177,7 +218,7 @@ The Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It
 
 <h2>4. System Diagram &amp; Governing Balances (Moran Ch. 4–5)</h2>
 <p>
-I model the sealed refrigeration loop as a steady-cycle control volume. The working fluid mass circulates internally, so net mass flow across the outer boundary is approximately zero. Heat and work cross the boundary.
+I model the sealed refrigeration loop as a steady-state control volume. The working fluid mass circulates internally, so net mass flow across the outer boundary is approximately zero. Heat and work cross the boundary.
 </p>
 
 <div class="eqblock">
@@ -197,13 +238,13 @@ I model the sealed refrigeration loop as a steady-cycle control volume. The work
 
 <h2>5. State-Point Cycle Model with Real Numbers</h2>
 <p>
-A full manufacturer thermodynamic test map is not publicly provided for this exact unit, so I build a realistic, citable state-point model using:
+A full manufacturer thermodynamic setup is not publicly provided for this exact unit, so I build a model using:
 </p>
 <ul>
   <li>(i) The unit's published annual electricity use</li>
   <li>(ii) The recommended compartment setpoints</li>
   <li>(iii) The common low-GWP domestic refrigerant <b>R-600a</b> (isobutane) used by many ENERGY STAR listed refrigerators</li>
-  <li>(iv) Published R-600a thermodynamic property tables</li>
+  <li>(iv) R-600a thermodynamic property tables</li>
 </ul>
 
 <h3>Chosen Representative Temperatures</h3>
@@ -277,7 +318,7 @@ For each condenser temperature case, I compute pressure ratio, isentropic outlet
   <div class="eqline"><b>Key results used in summary:</b> Q̇<sub>L</sub> = 130.7 W, Q̇<sub>H</sub> = 223.9 W, ṁ = 0.620 g/s, Ṡ<sub>gen</sub> = 0.2365 W/K</div>
 </div>
 
-<h3>CASE 2: Baseline Tight Cabinetry (T<sub>c</sub> = 50°C) — DETAILED</h3>
+<h3>CASE 2: Baseline Tight Cabinetry (T<sub>c</sub> = 50°C)</h3>
 
 <div class="eqblock">
   <div class="eqline"><b>Step 2:</b> r<sub>p</sub> = 6.887/0.559 = 12.32</div>
@@ -343,7 +384,7 @@ For each condenser temperature case, I compute pressure ratio, isentropic outlet
 
 <h2>7. Design/Operating Change Analysis: Condenser Heat Rejection in Tight Cabinetry</h2>
 <p>
-Because the unit is built into tight cabinetry, the condenser may run hotter due to reduced airflow. This increases condenser saturation pressure, increases compressor pressure ratio, increases compressor specific work w<sub>in</sub>, and reduces COP. The table in Section 6 quantifies this trend.
+Because the unit is built into tight cabinetry, the condenser may run hotter due to reduced airflow. This increases condenser saturation pressure, increases compressor pressure ratio, increases compressor specific work w<sub>in</sub>, and reduces COP. 
 </p>
 
 <h3>Annual energy impact estimate (keeping the same cooling load)</h3>
@@ -372,7 +413,7 @@ Interpretation: moving from a “cleaner/better airflow” condenser condition (
 
 <h2>8. Extra: Heat Leak Model (UA) and Ambient Temperature Sensitivity</h2>
 <p>
-To connect the cycle results to a building-physics style model, I estimate an equivalent overall heat leak coefficient UA by lumping all heat gains (through insulation, gasket leakage, door openings, internal lights/fans, and warm food loads) into a single linear relation:
+To connect the cycle results to a building-physics style model, I estimate an equivalent overall heat leak coefficient UA by putting all heat gains (through insulation, gasket leakage, door openings, internal lights/fans, and warm food loads) into a one linear relation:
 </p>
 <div class="eqblock">
   <div class="eqline">Q̇<sub>L</sub> ≈ UA · (T<sub>ambient</sub> − T<sub>cold,eq</sub>)</div>
@@ -395,19 +436,9 @@ To connect the cycle results to a building-physics style model, I estimate an eq
 
 <hr class="pdf-hr"/>
 
-<h2>9. Optional Measurements to Personalize Further (If Available)</h2>
-<p>
-To make this analysis even more device-specific, the most valuable additional data would be: (i) a photo of the rating plate listing refrigerant charge (grams), (ii) measured condenser-air temperature behind the grille, (iii) a short power log from a plug-in power meter (compressor cycling), and (iv) observed door-opening frequency.
-</p>
-
 <hr class="pdf-hr"/>
 
 <h2>10. Sources</h2>
 <p>
 Sub-Zero manufacturer sources (model specs, capacity, annual kWh, electrical supply): Sub-Zero product page and trade resources pages for CL4850SID/S. Sub-Zero Classic Series Use &amp; Care Guide (recommended setpoints: 38°F refrigerator, 0°F freezer). EnergyGuide label for CL4850SID/* family (817 kWh/yr). ENERGY STAR refrigerator listing for Sub-Zero CL4850S/S family (context on low-GWP refrigerants). Thermophysical properties used for cycle calculations: published R-600a saturation tables; R-600a c<sub>p</sub> and k from a refrigerant property datasheet.
 </p>
-
-<p class="caption">— End of Report —</p>
-
-</article>
-</div>
