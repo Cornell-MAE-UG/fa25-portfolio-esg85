@@ -4,7 +4,7 @@ title: "Thermodynamics Portfolio — Sub-Zero Refrigerator Cycle Analysis"
 description: "Above-and-beyond vapor-compression refrigeration cycle analysis (real numbers, state points, COP, Second Law)."
 technologies: [Thermodynamics, Vapor-Compression, R-600a, First Law, Second Law, COP]
 image: /assets/images/subzero-fridge.jpg
-permalink: /projects/2025-thermo/
+permalink: /projects/2025-Thermodynamics-Portfolio/
 ---
 
 <!-- =========================================================
