@@ -3,7 +3,7 @@ layout: project
 title: Thermodynamics Portfolio - Sub-Zero Refrigerator Analysis
 description: Vapor-Compression Refrigeration Cycle Analysis
 technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
-image: /assets/images/subzero-fridge.jpg
+image: /assets/images/sub-zero-closed.png
 ---
 
 <style>
@@ -310,13 +310,15 @@ My home kitchen/room temperature is approximately <b>79°F (26.1°C)</b>. The un
 Source notes: Annual energy use and electrical info are from Sub-Zero product/spec pages and the EnergyGuide label; recommended setpoints are from the Sub-Zero Classic Use &amp; Care Guide.
 </p>
 
-<!-- Optional figure if you have it -->
-<!--
+
 <div class="figure">
-  <img src="{{ '/assets/images/subzero-front.jpg' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
-  <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator.</div>
+  <img src="{{ '/assets/images/sub-zero-closed.png' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
+  <div class="figcap">Figure. Sub-Zero Closed CL4850SID/S refrigerator.</div>
 </div>
--->
+<div class="figure">
+  <img src="{{ '/assets/images/sub-zero-opened.png' | relative_url }}" alt="Sub-Zero CL4850SID/S refrigerator">
+  <div class="figcap">Figure. Sub-Zero Opened CL4850SID/S refrigerator.</div>
+</div>
 
 <hr class="pdf-hr"/>
 
