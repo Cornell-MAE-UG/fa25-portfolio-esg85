@@ -42,7 +42,7 @@ body{
 /* The report panel: WIDE */
 .pdf-page{
   width: 100% !important;         /* take full available width */
-  max-width: 1700px !important;   /* "screen sized" on large monitors */
+  /* max-width: 1700px !important;   "screen sized" on large monitors */
   margin: 0 auto !important;
 
   background: #f8fafc;
@@ -141,7 +141,7 @@ strong, b{ color: #0b2a4a; }
 @media (max-width: 1100px){
   .pdf-page{ padding: 40px 28px; }
 }
-@media (max-width: 720px){
+@media (max-width: 1100px){
   .pdf-shell{ padding: 14px 10px 28px; }
   .pdf-page{
     padding: 28px 16px;
