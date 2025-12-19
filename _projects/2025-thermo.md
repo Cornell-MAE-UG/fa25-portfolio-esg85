@@ -107,6 +107,64 @@ strong, b{
   .pdf-page h2{ font-size: 20px; }
   .pdf-page h3{ font-size: 18px; }
 }
+/* ===============================
+   FORCE FULL-PAGE BACKGROUND
+================================ */
+
+/* Kill Bootstrap's white container */
+main.container{
+  background: transparent !important;
+}
+
+/* Dark tinted site background */
+body{
+  background: linear-gradient(
+    180deg,
+    #0f172a 0%,    /* deep navy */
+    #111827 40%,   /* slate */
+    #020617 100%   /* near-black */
+  ) !important;
+}
+
+/* Centered paper card (non-white background visible) */
+.pdf-shell{
+  background: transparent !important;
+  padding: 48px 0;
+}
+
+/* Light paper contrast */
+.pdf-page{
+  background: #f8fafc;          /* NOT pure white */
+  box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+/* Bigger, higher-contrast text */
+.pdf-page{
+  font-size: 19px;
+  color: #0b1220;
+}
+
+.pdf-page h1{
+  color: #1e3a8a;
+}
+
+.pdf-page h2{
+  color: #1d4ed8;
+}
+
+.pdf-page h3{
+  color: #2563eb;
+}
+
+.eqblock{
+  background: #eaf2ff;
+  border-left-color: #2563eb;
+}
+
+.pdf-page table th{
+  background: #dbeafe;
+}
 
 </style>
 
