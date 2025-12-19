@@ -244,6 +244,10 @@ main.container{
 .pdf-page table:not(.full-width){
   width: min(100%, 900px);
 }
+.pdf-page table{
+  width: min(900px, 100%) !important;  /* key: less than the paper width */
+  margin: 14px auto !important;        /* centers it */
+}
 
 </style>
 
@@ -260,7 +264,7 @@ main.container{
 
 <h2>1. Personal Background &amp; Motivation</h2>
 <p>
-This refrigerator is the refrigerator installed in my own home. In everyday use, I feel it keeps food fresh for longer than other refrigerators I have used. Because it is a real appliance I interact with daily, it is a good candidate for connecting the vapor-compression refrigeration theory from this course (control volumes, First Law, Second Law, and COP) to a real engineered product.
+This refrigerator is the unit installed in my own home, making it a system I interact with daily. Through regular use, I have found that it maintains food freshness longer than other refrigerators I have previously used. Its familiarity and real-world operation make it a strong candidate for connecting the vapor-compression refrigeration concepts from this course (control volumes, the First Law, the Second Law, and COP) to a practical engineered product.
 </p>
 
 <hr class="pdf-hr"/>
