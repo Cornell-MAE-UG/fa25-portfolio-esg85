@@ -225,7 +225,7 @@ I model the sealed refrigeration loop as a steady-state control volume. The work
   <div class="eqline"><b>Mass balance (overall sealed loop):</b> (1) &nbsp; Σṁ<sub>in</sub> − Σṁ<sub>out</sub> = 0</div>
 </div>
 <div class="eqblock">
-  <div class="eqline"><b>Energy balance (steady-cycle First Law):</b> (2) &nbsp; Q̇<sub>H</sub> = Q̇<sub>L</sub> + Ẇ<sub>in</sub></div>
+  <div class="eqline"><b>Energy balance (steady-state First Law):</b> (2) &nbsp; Q̇<sub>H</sub> = Q̇<sub>L</sub> + Ẇ<sub>in</sub></div>
 </div>
 <div class="eqblock">
   <div class="eqline"><b>Entropy balance (Second Law, two-reservoir form):</b> (3) &nbsp; Ṡ<sub>gen</sub> = Q̇<sub>H</sub>/T<sub>H</sub> − Q̇<sub>L</sub>/T<sub>L</sub> ≥ 0</div>
