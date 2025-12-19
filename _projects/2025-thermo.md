@@ -126,8 +126,8 @@ body{
   background: linear-gradient(
     180deg,
     #1372d0ff 0%,   /* deep navy */
-    #155896ff 45%,  /* classic navy */
-    #06223eff 100%  /* darker navy */
+    #027aebff 45%,  /* classic navy */
+    #0c70d4ff 100%  /* darker navy */
   ) !important;
 }
 
