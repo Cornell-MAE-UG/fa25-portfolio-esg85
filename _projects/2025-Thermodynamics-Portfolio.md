@@ -38,7 +38,7 @@ body{
   box-shadow: 0 30px 90px rgba(0,0,0,0.45);
   border: 2px solid rgba(148,163,184,0.9);
 
-  font-size: 19px;
+  font-size: 17px;
   line-height: 1.65;
   color: #0b1220;
 }
@@ -78,7 +78,7 @@ body{
   .pdf-page{
     width: 96vw;
     padding: 28px 16px;
-    font-size: 17.5px;
+    font-size: 17px;
   }
   .pdf-page h1{ font-size: 28px; }
 }
@@ -120,7 +120,7 @@ main.container-fluid {
   .pdf-page {
     width: 98vw;
     padding: 28px 18px;
-    font-size: 17.5px;
+    font-size: 17px;
   }
 }
 
