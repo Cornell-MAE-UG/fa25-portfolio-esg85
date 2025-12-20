@@ -475,7 +475,14 @@ To connect the cycle results to a building-physics style model, I estimate an eq
 
 <hr class="pdf-hr"/>
 
-<h2>10. Sources</h2>
+<h2>10. Conclusion</h2>
+<p>
+  This project demonstrates how vapor-compression refrigeration theory can be applied to a real household appliance using a combination of thermodynamic cycle modeling, manufacturer data, and measured energy consumption. By modeling the Sub-Zero CL4850SID/S refrigerator as a steady-state control volume system and using R-600a refrigerant properties, the analysis connects abstract concepts such as the First and Second Laws, compressor work, and coefficient of performance (COP) to an appliance used daily.
+
+  The results show that real-world performance is strongly influenced by operating conditions and installation constraints, particularly ambient temperature and condenser airflow. While ideal cycle assumptions provide useful insight, incorporating measured annual energy use and realistic boundary conditions yields a more accurate picture of actual system behavior. Overall, this analysis illustrates how thermodynamics serves as a practical engineering tool for evaluating energy efficiency, design tradeoffs, and everyday system performance.
+</p>
+
+<h2>11. Sources</h2>
 <ul>
   <li>
     <strong>Sub-Zero (CL4850SID/S):</strong>
