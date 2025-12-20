@@ -101,7 +101,7 @@ main.container-fluid {
 /* TRUE wide page */
 .pdf-page,
 .wide-page {
-  width: min(90vw, 1600px);   /* <-- wider than before */
+  width: min(82vw, 1350px); /* <-- wider than before */
   max-width: none;           /* <-- critical */
   background: #f8fafc;
   padding: 64px 96px;        /* wider text block */
