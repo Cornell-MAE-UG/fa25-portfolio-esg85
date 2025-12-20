@@ -476,6 +476,29 @@ To connect the cycle results to a building-physics style model, I estimate an eq
 <hr class="pdf-hr"/>
 
 <h2>10. Sources</h2>
-<p>
-Sub-Zero manufacturer sources (model specs, capacity, annual kWh, electrical supply): Sub-Zero product page and trade resources pages for CL4850SID/S. Sub-Zero Classic Series Use &amp; Care Guide (recommended setpoints: 38°F refrigerator, 0°F freezer). EnergyGuide label for CL4850SID/* family (817 kWh/yr). ENERGY STAR refrigerator listing for Sub-Zero CL4850S/S family (context on low-GWP refrigerants). Thermophysical properties used for cycle calculations: published R-600a saturation tables; R-600a c<sub>p</sub> and k from a refrigerant property datasheet.
-</p>
+<ul>
+  <li>
+    <strong>Sub-Zero (CL4850SID/S):</strong>
+    Official product page and trade/spec resources (specifications, capacity, electrical supply, annual energy).
+  </li>
+
+  <li>
+    <strong>Sub-Zero Classic Series Use & Care Guide:</strong>
+    Recommended temperature setpoints (38°F refrigerator, 0°F freezer).
+  </li>
+
+  <li>
+    <strong>EnergyGuide (CL4850SID/S family):</strong>
+    Annual energy use value (817 kWh/yr).
+  </li>
+
+  <li>
+    <strong>ENERGY STAR listing (CL4850S/S family):</strong>
+    Efficiency and refrigerant context (used for low-GWP discussion).
+  </li>
+
+  <li>
+    <strong>R-600a properties:</strong>
+    Saturation tables and property datasheets (e.g., <em>c<sub>p</sub></em>, <em>k</em>) for cycle calculations.
+  </li>
+</ul>
