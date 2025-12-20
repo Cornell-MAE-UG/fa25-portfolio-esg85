@@ -107,8 +107,8 @@ main.container-fluid {
   padding: 64px 96px;        /* wider text block */
   border-radius: 18px;
 
-  font-size: 20px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.6;
   color: #0b1220;
 
   box-shadow: 0 35px 100px rgba(0,0,0,0.45);
