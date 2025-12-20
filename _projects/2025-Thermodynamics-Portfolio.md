@@ -56,7 +56,7 @@ body{
 
 /* Tables (when markdown tables render) */
 .pdf-page table{
-  width: 80%;
+  width: 100%;
   border-collapse: collapse;
   border: 2px solid rgba(148,163,184,0.9);
   margin: 14px 0;
@@ -74,9 +74,9 @@ body{
 }
 
 /* Mobile */
-@media (max-width: 800px){
+@media (max-width: 900px){
   .pdf-page{
-    width: 80vw;
+    width: 96vw;
     padding: 28px 16px;
     font-size: 17.5px;
   }
@@ -101,7 +101,7 @@ main.container-fluid {
 /* TRUE wide page */
 .pdf-page,
 .wide-page {
-  width: min(96vw, 2200px);   /* <-- wider than before */
+  width: min(90vw, 1600px);   /* <-- wider than before */
   max-width: none;           /* <-- critical */
   background: #f8fafc;
   padding: 64px 96px;        /* wider text block */
