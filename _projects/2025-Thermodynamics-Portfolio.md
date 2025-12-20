@@ -56,7 +56,7 @@ body{
 
 /* Tables (when markdown tables render) */
 .pdf-page table{
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   border: 2px solid rgba(148,163,184,0.9);
   margin: 14px 0;
