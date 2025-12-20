@@ -74,9 +74,9 @@ body{
 }
 
 /* Mobile */
-@media (max-width: 900px){
+@media (max-width: 800px){
   .pdf-page{
-    width: 96vw;
+    width: 80vw;
     padding: 28px 16px;
     font-size: 17.5px;
   }
