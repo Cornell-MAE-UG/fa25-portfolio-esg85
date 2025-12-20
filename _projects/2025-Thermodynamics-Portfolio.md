@@ -198,7 +198,7 @@ Source notes: Annual energy use and electrical info are from Sub-Zero product/sp
 
   <div class="col-md-6">
     <div class="figure">
-      <img src="{{ '/assets/images/sub-zero-opened.png' | relative_url }}"
+      <img src="{{ '/assets/images/sub-zero-opened.jpg' | relative_url }}"
            alt="Sub-Zero CL4850SID/S refrigerator opened"
            class="img-fluid">
       <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator (opened).</div>
@@ -226,6 +226,12 @@ The Sub-Zero refrigerator is a <b>vapor-compression refrigeration system</b>. It
 </div>
 
 <hr class="pdf-hr"/>
+<div class="figure text-center">
+  <img src="{{ '/assets/images/vapor-diagram.jpg' | relative_url }}"
+       alt="Descriptive alt text"
+       class="img-fluid">
+  <div class="figcap">Diagram of Vapor-compression loop</div>
+</div>
 
 <h2>4. System Diagram &amp; Governing Balances</h2>
 <p>
@@ -246,6 +252,26 @@ I model the sealed refrigeration loop as a steady-state control volume. The work
 </div>
 
 <hr class="pdf-hr"/>
+
+<div class="row text-center">
+  <div class="col-md-6">
+    <div class="figure">
+      <img src="{{ '/assets/images/ts-diagram.jpg' | relative_url }}"
+           alt="TS Diagram"
+           class="img-fluid">
+      <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator (closed).</div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="figure">
+      <img src="{{ '/assets/images/pv-diagram.jpg' | relative_url }}"
+           alt="PV Diagram"
+           class="img-fluid">
+      <div class="figcap">Figure. Sub-Zero CL4850SID/S refrigerator (opened).</div>
+    </div>
+  </div>
+</div>
 
 <h2>5. State-Point Cycle Model with Real Numbers</h2>
 <p>
