@@ -1,7 +1,7 @@
 ---
 layout: project
 description: Vapor-Compression Refrigeration Cycle Analysis
-technologies: [Thermodynamics, R-600a Refrigerant, Energy Analysis]
+technologies: [Hand Calculations]
 image: /assets/images/sub-zero-closed.png
 ---
 
