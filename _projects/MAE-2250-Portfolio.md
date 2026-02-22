@@ -6,15 +6,16 @@ description: Design proposal and validation plan for vineyard SLF capture system
 # image: /assets/images/spaceship-design.jpg
 ---
 
-<div class="pdf-container">
+<div style="width:100%; height: 92vh; margin-top: 1rem;">
   <iframe
     src="{{ '/assets/Batties_ClientPitch.pdf' | relative_url }}"
-    type="application/pdf">
-  </iframe>
+    style="width:100%; height:100%; border:0; display:block;"
+    loading="lazy"
+  ></iframe>
 </div>
 
-<p style="text-align:center; margin-top:10px;">
-  <a href="{{ '/assets/Batties_ClientPitch.pdf' | relative_url }}" target="_blank">
+<p style="margin-top: 0.75rem;">
+  <a href="{{ '/assets/Batties_ClientPitch.pdf' | relative_url }}" target="_blank" rel="noopener">
     Open PDF in new tab
   </a>
 </p>
