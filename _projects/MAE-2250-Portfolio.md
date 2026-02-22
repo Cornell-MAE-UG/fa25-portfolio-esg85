@@ -2,7 +2,7 @@
 layout: project
 title: Spotted Lanternfly Trap – Client Pitch
 description: Design proposal and validation plan for vineyard SLF capture system
-technologies: [Prototyping, Mechanical Design, Field Testing]
+# technologies: [Prototyping, Mechanical Design, Field Testing]
 # image: /assets/images/spaceship-design.jpg
 ---
 
