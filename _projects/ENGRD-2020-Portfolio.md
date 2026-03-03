@@ -101,7 +101,7 @@ Conclusion:
 
 ## Actuator Design Consideration
 
-<img src="{{ '/assets/images/workthrough-2020.png' | relative_url }}"
+<img src="{{ '/assets/images/workthrough-2020.jpg' | relative_url }}"
            class="img-fluid">
 <!-- ![Nutcracker Sketch 2]({{ /assets/images/workthrough-2020.png" }}) -->
 
