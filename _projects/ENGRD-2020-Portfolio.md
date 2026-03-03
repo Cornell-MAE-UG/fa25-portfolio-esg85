@@ -3,7 +3,7 @@ layout: project
 title: Statics Case Study – Nutcracker Force & Usability Analysis
 description: Free body diagram analysis, torque balance, and actuator sizing for a nutcracker mechanism
 technologies: [Statics, Free Body Diagrams, Torque Analysis]
-image: /assets/images/nutcracker-sketch.png
+image: /assets/images/diagram-2020.png
 ---
 
 ## Problem Statement
