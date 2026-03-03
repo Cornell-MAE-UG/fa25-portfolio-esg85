@@ -27,8 +27,9 @@ Design a nutcracker with specified geometry and applied forces.
 ---
 
 ## Free Body Diagram
-
-![Nutcracker Sketch 1]({{ "/assets/images/diagram-2020.png" }})
+<img src="{{ '/assets/images/diagram-2020.png' | relative_url }}"
+           class="img-fluid">
+<!-- ![Nutcracker Sketch 1]({{ "/assets/images/diagram-2020.png" }}) -->
 
 The nutcracker consists of two symmetric handles connected by a pivot.
 
@@ -100,7 +101,9 @@ Conclusion:
 
 ## Actuator Design Consideration
 
-![Nutcracker Sketch 2]({{ "/assets/images/workthrough-2020.png" }})
+<img src="{{ '/assets/images/workthrough-2020.png' | relative_url }}"
+           class="img-fluid">
+<!-- ![Nutcracker Sketch 2]({{ /assets/images/workthrough-2020.png" }}) -->
 
 If using a linear actuator:
 
