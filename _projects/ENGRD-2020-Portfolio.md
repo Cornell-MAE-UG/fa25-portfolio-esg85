@@ -142,3 +142,15 @@ $$
 - Force rating ≥ 150 lbf (≈ 600 N)  
 - Stroke length ≈ 2 inches  
 - Linear actuator configuration  
+
+## Final Design Recommendation
+
+Based on analysis, the current manual configuration is not ergonomically feasible.
+
+Recommended improvements:
+- Increase handle length to increase mechanical advantage
+- Add compound linkage
+- Implement geared mechanism
+- Use linear actuator for assisted operation
+
+This project reinforced how static equilibrium analysis directly informs product usability and human-centered design.
