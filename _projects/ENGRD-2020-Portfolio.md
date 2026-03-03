@@ -4,6 +4,7 @@ title: Statics Case Study – Nutcracker Force & Usability Analysis
 description: Free body diagram analysis, torque balance, and actuator sizing for a nutcracker mechanism
 technologies: [Statics, Free Body Diagrams, Torque Analysis]
 image: /assets/images/diagram-2020.png
+math: true
 ---
 
 ## Problem Statement
@@ -27,7 +28,7 @@ Design a nutcracker with specified geometry and applied forces.
 
 ## Free Body Diagram
 
-![Nutcracker Sketch 1](/assets/images/diagram-2020.png)
+![Nutcracker Sketch 1]({{ "/assets/images/diagram-2020.png" | relative_url }})
 
 The nutcracker consists of two symmetric handles connected by a pivot.
 
@@ -43,35 +44,37 @@ Assumptions:
 
 Taking moments about the pivot:
 
-\[
+$$
 \sum M_{pivot} = 0
-\]
+$$
 
-\[
+$$
 F_H L = F_N d
-\]
+$$
 
 From design assumptions:
 
 - Required nut force:  
-  \[
-  F_N = 3600 \, N
-  \]
+
+$$
+F_N = 3600 \, N
+$$
 
 - Applied handle force:  
-  \[
-  F_H = 600 \, N
-  \]
+
+$$
+F_H = 600 \, N
+$$
 
 Solving:
 
-\[
+$$
 600L = 3600d
-\]
+$$
 
-\[
+$$
 L = 6d
-\]
+$$
 
 ### Interpretation
 
@@ -97,65 +100,42 @@ Conclusion:
 
 ## Actuator Design Consideration
 
-![Nutcracker Sketch 2](/assets/images/workthrough-2020.png)
+![Nutcracker Sketch 2]({{ "/assets/images/workthrough-2020.png" | relative_url }})
 
 If using a linear actuator:
 
 Required crushing force:
-\[
-F_N ≈ 3600 N
-\]
+
+$$
+F_N \approx 3600 \, N
+$$
 
 Handle force equivalent:
-\[
-F_H ≈ 600 N
-\]
+
+$$
+F_H \approx 600 \, N
+$$
 
 Compression requirement at nut:
-\[
-\Delta x_{nut} ≈ 0.25 \text{ in}
-\]
+
+$$
+\Delta x_{nut} \approx 0.25 \text{ in}
+$$
 
 Since:
 
-\[
+$$
 L = 6d
-\]
+$$
 
 Stroke requirement scales proportionally:
 
-\[
-Stroke ≈ 0.25 \times 6 = 1.5 \text{ in}
-\]
+$$
+Stroke \approx 0.25 \times 6 = 1.5 \text{ in}
+$$
 
 ### Recommended Specification
 
 - Force rating ≥ 150 lbf (≈ 600 N)  
 - Stroke length ≈ 2 inches  
 - Linear actuator configuration  
-
----
-
-## Engineering Takeaways
-
-- Mechanical advantage trades distance for force.
-- Human-centered design must consider ergonomic force limits.
-- Even simple consumer tools require equilibrium analysis.
-- Design improvements include:
-  - Increasing handle length
-  - Adding gearing
-  - Adding motorized actuation
-
----
-
-## Reflection
-
-This project demonstrates:
-
-- Free body diagram modeling
-- Moment balance
-- Mechanical advantage analysis
-- Translating theory into real-world usability
-- Preliminary actuator sizing
-
-This is a practical application of static equilibrium principles to consumer product design.
