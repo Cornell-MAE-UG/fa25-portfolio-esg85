@@ -2,6 +2,7 @@
 layout: project
 title: Spotted Lanternfly Trap
 description: Client pitch and functional prototype for a vineyard SLF capture system
+image: /assets/images/SLF_trap.jpg
 ---
 
 <style>
@@ -77,12 +78,12 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
 <div id="functional-prototype" class="section-card">
   <h2>Functional Prototype</h2>
 
-  <h3>Purpose of the Prototype</h3>
+  <h4>Purpose of the Prototype</h4>
   <p>
     The functional prototype was built to test whether a rotating fan-and-platform mechanism could move spotted lanternfly-sized objects into collection slots while maintaining smooth motion and acceptable mechanical clearance.
   </p>
 
-  <h3>What Was Tested</h3>
+  <h4>What Was Tested</h4>
   <ul>
     <li>Whether the fan moved smoothly through the bristled regions</li>
     <li>Whether the system could operate in the target low-speed range</li>
@@ -91,7 +92,7 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
     <li>Whether SLF-sized objects could actually be moved into the trap openings</li>
   </ul>
 
-  <h3>Outcome</h3>
+  <h4>Outcome</h4>
   <p>
     The prototype showed that the concept can move SLF-sized objects, but the wooden construction created important limitations. The fan required substantially more force to move through the bristled regions than through flat regions, indicating that the motion was not yet smooth enough. Manual cranking demonstrated that low-speed operation was possible, but motor testing was postponed. We also observed friction, bending, and spacing issues that affected reliability and capture efficiency.
   </p>
