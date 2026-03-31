@@ -44,7 +44,7 @@ description: Client pitch and functional prototype for a vineyard SLF capture sy
 
 ## Project Overview
 
-This project proposes and tests a mechanical spotted lanternfly (SLF) trap for vineyard use. The design goal is to sweep SLF-sized insects into openings using a rotating mechanism while keeping motion reliable and scalable for a later motorized version.
+This project proposes and tests a mechanical spotted lanternfly (SLF) trap for vineyard use. The design goal is to trap spotted lanternflies while they feed, using a rotating fan mechanism to sweep them into a one-way trap.
 
 <div class="toc-box">
   <strong>Contents</strong>
@@ -93,7 +93,7 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
 
   <h3>Outcome</h3>
   <p>
-    The prototype showed that the concept can move SLF-sized objects, but the wooden construction created important limitations. The fan required substantially more force to move through the bristled regions than through flat regions, indicating that the motion was not yet smooth enough. Manual cranking demonstrated that low-speed operation was possible, but motor testing was postponed. The team also observed friction, bending, and spacing issues that affected reliability and capture efficiency.
+    The prototype showed that the concept can move SLF-sized objects, but the wooden construction created important limitations. The fan required substantially more force to move through the bristled regions than through flat regions, indicating that the motion was not yet smooth enough. Manual cranking demonstrated that low-speed operation was possible, but motor testing was postponed. We also observed friction, bending, and spacing issues that affected reliability and capture efficiency.
   </p>
 
   <p>
@@ -107,7 +107,7 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
   </p>
 
   <iframe
-    src="{{ '/assets/ODP5.pdf' | relative_url }}"
+    src="{{ '/assets/ODP_5.pdf' | relative_url }}"
     class="pdf-frame"
     loading="lazy">
   </iframe>
