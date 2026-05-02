@@ -6,6 +6,14 @@ technologies: [Statics, Free Body Diagrams, Torque Analysis]
 image: /assets/images/diagram-2020.png
 math: true
 ---
+<div class="toc-box">
+  <h2>Table of Contents</h2>
+  <ul>
+    <li><a href="#question-1">Question 1: Vapor-Compression Refrigeration Cycle Analysis</a></li>
+    <li><a href="#question-2">Question 2: Flexible Nutcracker Handle Beam Design</a></li>
+  </ul>
+</div>
+
 
 ## Problem Statement
 
@@ -190,13 +198,6 @@ This project reinforced how static equilibrium analysis directly informs product
 }
 </style>
 
-<div class="toc-box">
-  <h2>Table of Contents</h2>
-  <ul>
-    <li><a href="#question-1">Question 1: Vapor-Compression Refrigeration Cycle Analysis</a></li>
-    <li><a href="#question-2">Question 2: Flexible Nutcracker Handle Beam Design</a></li>
-  </ul>
-</div>
 
 <style>
 .beam-box{
