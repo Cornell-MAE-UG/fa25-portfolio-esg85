@@ -158,6 +158,47 @@ This project reinforced how static equilibrium analysis directly informs product
 <hr class="pdf-hr"/>
 
 <style>
+.toc-box{
+  background: #f1f5f9;
+  border: 1.5px solid #cbd5e1;
+  border-left: 6px solid #2563eb;
+  padding: 16px 20px;
+  border-radius: 12px;
+  margin: 18px 0 24px;
+}
+
+.toc-box h2{
+  border-bottom: none !important;
+  margin-top: 0 !important;
+  padding-bottom: 0 !important;
+  font-size: 22px;
+  color: #0b2a4a;
+}
+
+.toc-box ul{
+  margin: 8px 0 0 20px;
+}
+
+.toc-box a{
+  color: #1d4ed8;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.toc-box a:hover{
+  text-decoration: underline;
+}
+</style>
+
+<div class="toc-box">
+  <h2>Table of Contents</h2>
+  <ul>
+    <li><a href="#question-1">Question 1: Vapor-Compression Refrigeration Cycle Analysis</a></li>
+    <li><a href="#question-2">Question 2: Flexible Nutcracker Handle Beam Design</a></li>
+  </ul>
+</div>
+
+<style>
 .beam-box{
   background: #eef6ff;
   border: 1.5px solid #bfdbfe;
