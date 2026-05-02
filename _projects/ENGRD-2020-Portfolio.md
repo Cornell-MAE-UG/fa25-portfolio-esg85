@@ -9,11 +9,10 @@ math: true
 <div class="toc-box">
   <h2>Table of Contents</h2>
   <ul>
-    <li><a href="#question-1">Question 1: Vapor-Compression Refrigeration Cycle Analysis</a></li>
+    <li><a href="#question-1">Question 1: Overall Nutcracker Design</a></li>
     <li><a href="#question-2">Question 2: Flexible Nutcracker Handle Beam Design</a></li>
   </ul>
 </div>
-
 
 ## Problem Statement
 
