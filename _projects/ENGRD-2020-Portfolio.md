@@ -465,9 +465,9 @@ Then:
 </div>
 
 <h3>12.7 Final Design Drawing</h3>
-
 <div class="beam-figure">
-<svg class="beam-svg" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+<img src="{{ '/assets/images/new_nutcracker.jpg' | relative_url }}"
+           class="img-fluid">
   <defs>
     <marker id="beamArrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a"/>
@@ -538,50 +538,6 @@ Then:
 Final design: carbon fiber reinforced polymer hollow rectangular handle, 20 mm tall × 10 mm wide × 0.5 mm wall thickness.
 </div>
 </div>
-
-<h3>12.8 Summary</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Requirement / Result</th>
-      <th>Value</th>
-      <th>Pass?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Maximum deflection location</td>
-      <td>x = L, actuator end</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td>Required bending stiffness</td>
-      <td>EI ≥ 177.4 N·m²</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td>Selected bending stiffness</td>
-      <td>EI = 205.5 N·m²</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Allowable deflection</td>
-      <td>3.05 mm</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td>Predicted maximum deflection</td>
-      <td>2.63 mm</td>
-      <td>Yes</td>
-    </tr>
-    <tr>
-      <td>Selected material</td>
-      <td>Carbon fiber reinforced polymer</td>
-      <td>Mass-efficient</td>
-    </tr>
-  </tbody>
-</table>
 
 <p>
 Overall, this additional analysis shows that the flexible handle design satisfies the deflection requirement. The selected hollow carbon fiber handle is mass-efficient because it provides enough bending stiffness while removing unnecessary material near the neutral axis.
