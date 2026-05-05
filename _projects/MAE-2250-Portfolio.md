@@ -52,6 +52,7 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
   <ul>
     <li><a class="jump-link" href="#client-pitch">Client Pitch</a></li>
     <li><a class="jump-link" href="#functional-prototype">Functional Prototype</a></li>
+    <li><a class="jump-link" href="#client-report">Client Report</a></li>
   </ul>
 </div>
 
@@ -109,6 +110,26 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
 
   <iframe
     src="{{ '/assets/ODP_5.pdf' | relative_url }}"
+    class="pdf-frame"
+    loading="lazy">
+  </iframe>
+</div>
+
+<div id="client-report" class="section-card">
+  <h2>Client Report</h2>
+
+  <p>
+   This report presents the final prototype for the SLF trap. The problem is that SLF can severely damage grape vines and reduce harvests, so we designed a portable, low-maintenance trap to capture them before they reach vineyards. The final design is a motorized spinning trap: a bristled fan pushes SLF through slots into a liquid-filled basin, with a rotating slot cover preventing escape, plus latches for cleaning, a roof hook for hanging, and a tripod option for field placement. Testing showed the fan could move SLF-sized objects into the slots, the motor had enough torque, and the mechanism ran consistently with minimal wear, while staying under budget. We recommend improving bristle spacing, reinforcing the motor mount, adding solar power, and testing attractants, capture rate, and fan speed in future field trials.
+  </p>
+
+  <p>
+    <a href="{{ '/assets/O6_Exhibit_ClientReport.pdf' | relative_url }}" target="_blank" rel="noopener">
+      Open Functional Prototype PDF
+    </a>
+  </p>
+
+  <iframe
+    src="{{ '/assets/O6_Exhibit_ClientReport.pdf' | relative_url }}"
     class="pdf-frame"
     loading="lazy">
   </iframe>
