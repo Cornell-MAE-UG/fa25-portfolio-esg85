@@ -124,7 +124,7 @@ This project proposes and tests a mechanical spotted lanternfly (SLF) trap for v
 
   <p>
     <a href="{{ '/assets/O6_Exhibit_ClientReport.pdf' | relative_url }}" target="_blank" rel="noopener">
-      Open Functional Prototype PDF
+      Open Client Report PDF
     </a>
   </p>
 
